@@ -1,5 +1,6 @@
 ---
 /** HeroHome — Figma node 4:6 */
+import { href } from '../../lib/nav';
 ---
 
 <section class="bg-white w-full relative overflow-hidden">
@@ -26,13 +27,13 @@
 
     <!-- Buttons -->
     <div class="flex flex-row gap-4 mt-8">
-      <a href="/contact" class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-flex items-center gap-1.5">
+      <a href={href('/contact')} class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-flex items-center gap-1.5">
         Let's have a chat
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
           <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <a href="/consultancy" class="bg-transparent rounded-lg px-8 py-3 font-semibold text-dark">
+      <a href={href('/consultancy')} class="bg-transparent rounded-lg px-8 py-3 font-semibold text-dark">
         See how it works
       </a>
     </div>

@@ -1,5 +1,6 @@
 ---
 /** CtaBand — Figma node 4:275 */
+import { href } from '../../lib/nav';
 ---
 
 <section class="bg-accent w-full">
@@ -12,7 +13,7 @@
 
     <!-- Centered button -->
     <div class="flex justify-center mt-8">
-      <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
+      <a href={href('/contact')} class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
         Get in Touch
       </a>
     </div>

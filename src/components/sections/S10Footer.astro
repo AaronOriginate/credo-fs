@@ -1,3 +1,6 @@
+---
+import { href } from '../../lib/nav';
+---
 <!-- Section 10 — Footer | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:448 -->
 <footer data-figma-ref="8:448" class="bg-navy pt-16 sm:pt-20 pb-8">
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,10 +25,10 @@
     <div class="border-t border-white/10 pt-8 flex flex-col lg:flex-row items-center justify-between gap-6">
       <!-- Nav links -->
       <nav class="flex flex-wrap items-center gap-6">
-        <a href="/about" class="text-white/60 text-sm hover:text-white transition-colors">About Andy</a>
-        <a href="/consultancy" class="text-white/60 text-sm hover:text-white transition-colors">Consultancy</a>
-        <a href="/products" class="text-white/60 text-sm hover:text-white transition-colors">Products</a>
-        <a href="/reviews" class="text-white/60 text-sm hover:text-white transition-colors">Reviews</a>
+        <a href={href('/about')} class="text-white/60 text-sm hover:text-white transition-colors">About Andy</a>
+        <a href={href('/consultancy')} class="text-white/60 text-sm hover:text-white transition-colors">Consultancy</a>
+        <a href={href('/products')} class="text-white/60 text-sm hover:text-white transition-colors">Products</a>
+        <a href={href('/reviews')} class="text-white/60 text-sm hover:text-white transition-colors">Reviews</a>
       </nav>
 
       <!-- Social icons -->

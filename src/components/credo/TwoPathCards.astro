@@ -1,5 +1,6 @@
 ---
 /** TwoPathCards — Figma node 4:281 */
+import { href } from '../../lib/nav';
 ---
 
 <section class="w-full">
@@ -25,7 +26,7 @@
         <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-white">Need honest advice?</h3>
         <p class="mt-6 text-lg leading-relaxed text-white/80">I'll review what you've got, tell you if you're getting a fair deal, and recommend changes only if they'll genuinely help. Free initial conversation. No strings.</p>
         <div class="mt-8">
-          <a href="/consultancy" class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
+          <a href={href('/consultancy')} class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
             Talk to Andy
           </a>
         </div>
@@ -36,7 +37,7 @@
         <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Looking for a new till or card machine?</h3>
         <p class="mt-6 text-lg leading-relaxed text-dark">I work with the brands I trust, not the ones that pay the most. Browse the systems I recommend and find out what they'd actually cost you.</p>
         <div class="mt-8">
-          <a href="/products" class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
+          <a href={href('/products')} class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
             See products
           </a>
         </div>

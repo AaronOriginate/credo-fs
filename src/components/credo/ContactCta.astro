@@ -1,5 +1,6 @@
 ---
 /** ContactCta — Figma node 4:485 */
+import { href } from '../../lib/nav';
 interface Props {
   heading?: string;
   subtext?: string;
@@ -20,7 +21,7 @@ const {
 
     <!-- Buttons row -->
     <div class="flex flex-wrap justify-center gap-4 mt-8">
-      <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
+      <a href={href('/contact')} class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
         Let's have a chat
       </a>
     </div>

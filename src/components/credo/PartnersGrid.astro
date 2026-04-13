@@ -1,5 +1,6 @@
 ---
 /** PartnersGrid — exact copy of S05PartnersGrid with Credo brands */
+import { href } from '../../lib/nav';
 interface Props {
   heading?: string;
   subtext?: string;
@@ -52,7 +53,7 @@ const {
             </div>
           ))}
         </div>
-        <a href="/products" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+        <a href={href('/products')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
           See all partners &rarr;
         </a>
       </div>

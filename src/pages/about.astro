@@ -8,6 +8,7 @@ import TestimonialBlock from "../components/credo/TestimonialBlock.astro";
 import AboutPersonal from "../components/credo/AboutPersonal.astro";
 import ContactCta from "../components/credo/ContactCta.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import { href } from '../lib/nav';
 ---
 
 <Layout title="About Andy — Credo FS">
@@ -47,7 +48,7 @@ import S10Footer from "../components/sections/S10Footer.astro";
   <!-- Link to reviews -->
   <div class="bg-white pb-12 -mt-8">
     <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-      <a href="/reviews" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+      <a href={href('/reviews')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
         Read all reviews on TrustPilot &rarr;
       </a>
     </div>

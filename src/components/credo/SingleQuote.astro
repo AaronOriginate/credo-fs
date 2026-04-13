@@ -1,5 +1,6 @@
 ---
 /** SingleQuote — Figma node 4:432 */
+import { href } from '../../lib/nav';
 interface Props {
   label?: string;
   heading?: string;
@@ -43,7 +44,7 @@ const {
         </div>
         {linkHref && (
           <div class="mt-6">
-            <a href={linkHref} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+            <a href={href(linkHref)} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
               {linkText} &rarr;
             </a>
           </div>

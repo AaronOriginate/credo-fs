@@ -1,5 +1,6 @@
 ---
 /** PatternBridge — exact copy of S19CtaBandGray with props */
+import { href } from '../../lib/nav';
 interface Props {
   heading: string;
   linkText?: string;
@@ -16,7 +17,7 @@ const { heading, linkText, linkHref } = Astro.props;
     </h2>
     {linkText && linkHref && (
       <div class="flex justify-center mt-10">
-        <a href={linkHref} class="inline-flex items-center justify-center px-8 py-4 bg-navy text-white font-body font-semibold text-base rounded-lg hover:bg-navy/90 transition-colors">
+        <a href={href(linkHref)} class="inline-flex items-center justify-center px-8 py-4 bg-navy text-white font-body font-semibold text-base rounded-lg hover:bg-navy/90 transition-colors">
           {linkText}
         </a>
       </div>

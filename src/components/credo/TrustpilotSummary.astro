@@ -1,3 +1,6 @@
+---
+import { href } from '../../lib/nav';
+---
 <!-- Figma node: 4:770 — TrustpilotSummary -->
 <section class="bg-white w-full">
   <div class="max-w-[1232px] mx-auto px-8 py-24">
@@ -28,7 +31,7 @@
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">5.0</span>
           <span class="text-sm text-dark mb-3">/ 5 stars</span>
         </div>
-        <a href="/reviews" class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
+        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
           Read Reviews
         </a>
       </div>
@@ -45,7 +48,7 @@
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">100</span>
           <span class="text-sm text-dark mb-3">% real</span>
         </div>
-        <a href="/reviews" class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
+        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
           View Profile
         </a>
       </div>
@@ -62,7 +65,7 @@
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">6</span>
           <span class="text-sm text-dark mb-3">reviews</span>
         </div>
-        <a href="/reviews" class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
+        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
           See All
         </a>
       </div>

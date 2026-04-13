@@ -1,5 +1,6 @@
 ---
 /** NarrativeBlock — Figma node 4:38 */
+import { href } from '../../lib/nav';
 ---
 
 <section class="w-full">
@@ -31,7 +32,7 @@
         </p>
 
         <!-- Yellow CTA button -->
-        <a href="/contact" class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-block w-fit mt-6">
+        <a href={href('/contact')} class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-block w-fit mt-6">
           Let's talk
         </a>
 

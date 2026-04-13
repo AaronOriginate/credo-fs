@@ -1,21 +1,24 @@
+---
+import { href } from '../../lib/nav';
+---
 <!-- Section 01 — Navigation | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:2 -->
 <nav data-figma-ref="8:2" class="sticky top-0 z-50 bg-white border-b border-gray-200">
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="shrink-0">
+      <a href={href('/')} class="shrink-0">
         <img src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/Asset-2@2x.png" alt="Credo FS" class="h-9 w-auto" />
       </a>
 
       <!-- Desktop nav -->
       <div class="hidden lg:flex items-center gap-8">
-        <a href="/" class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
-        <a href="/about" class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
-        <a href="/consultancy" class="text-sm font-medium text-dark">Consultancy</a>
-        <a href="/products" class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
-        <a href="/reviews" class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
+        <a href={href('/')} class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
+        <a href={href('/about')} class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
+        <a href={href('/consultancy')} class="text-sm font-medium text-dark">Consultancy</a>
+        <a href={href('/products')} class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
+        <a href={href('/reviews')} class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
         <a
-          href="/contact"
+          href={href('/contact')}
           class="bg-accent text-dark text-sm font-semibold px-5 py-2.5 rounded-full hover:brightness-95 transition-all"
         >
           Let's have a chat
@@ -39,13 +42,13 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white">
     <div class="max-w-[1232px] mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4">
-      <a href="/" class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
-      <a href="/about" class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
-      <a href="/consultancy" class="text-sm font-medium text-dark">Consultancy</a>
-      <a href="/products" class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
-      <a href="/reviews" class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
+      <a href={href('/')} class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
+      <a href={href('/about')} class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
+      <a href={href('/consultancy')} class="text-sm font-medium text-dark">Consultancy</a>
+      <a href={href('/products')} class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
+      <a href={href('/reviews')} class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
       <a
-        href="/contact"
+        href={href('/contact')}
         class="bg-accent text-dark text-sm font-semibold px-5 py-2.5 rounded-full text-center hover:brightness-95 transition-all"
       >
         Let's have a chat

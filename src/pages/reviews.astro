@@ -7,6 +7,7 @@ import ReviewCards from "../components/credo/ReviewCards.astro";
 import ThemeStats from "../components/credo/ThemeStats.astro";
 import ContactCta from "../components/credo/ContactCta.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import { href } from '../lib/nav';
 ---
 
 <Layout title="Reviews — Credo FS">
@@ -21,7 +22,7 @@ import S10Footer from "../components/sections/S10Footer.astro";
   <!-- Cross-link to About -->
   <div class="bg-light-gray pb-16 -mt-4">
     <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-      <a href="/about" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+      <a href={href('/about')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
         Read Andy's story &rarr;
       </a>
     </div>

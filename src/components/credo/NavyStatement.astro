@@ -1,5 +1,6 @@
 ---
 /** NavyStatement — Figma node 4:33 */
+import { href } from '../../lib/nav';
 interface Props {
   heading?: string;
   body?: string;
@@ -42,7 +43,7 @@ const isAccent = bg === 'accent';
           </div>
         ))}
         {linkHref && (
-          <a href={linkHref} class={`font-medium hover:underline ml-auto ${isAccent ? 'text-dark' : 'text-accent'}`}>{linkText} &rarr;</a>
+          <a href={href(linkHref)} class={`font-medium hover:underline ml-auto ${isAccent ? 'text-dark' : 'text-accent'}`}>{linkText} &rarr;</a>
         )}
       </div>
     )}
