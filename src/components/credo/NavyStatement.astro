@@ -1,0 +1,50 @@
+---
+/** NavyStatement — Figma node 4:33 */
+interface Props {
+  heading?: string;
+  body?: string;
+  stats?: { value: string; label: string }[];
+  linkText?: string;
+  linkHref?: string;
+  bg?: 'navy' | 'accent';
+}
+const {
+  heading = "I don't work for any till company or card machine provider. I work for you.",
+  body = "Twenty years in hospitality. I ran pubs, managed 9,000 Punch Taverns for Whitbread, and sat where you're sitting with the same contracts and the same nonsense. I started Credo because I got tired of watching good operators get a raw deal.",
+  stats = [
+    { value: "30+", label: "years in hospitality" },
+    { value: "100%", label: "independent" },
+  ],
+  linkText = "Read more about my background",
+  linkHref = "/about",
+  bg = 'navy',
+} = Astro.props;
+
+const isAccent = bg === 'accent';
+---
+
+<section class={`${isAccent ? 'bg-accent' : 'bg-navy'} w-full`}>
+  <div class="max-w-[1232px] mx-auto px-8 py-24 sm:py-32">
+    <h2 class={`font-heading font-medium text-[48px] sm:text-[64px] lg:text-[80px] leading-tight tracking-[-2px] max-w-[990px] ${isAccent ? 'text-dark' : 'text-white'}`}>
+      {heading}
+    </h2>
+
+    <p class={`text-lg leading-relaxed max-w-[700px] mt-8 ${isAccent ? 'text-dark/70' : 'text-white/80'}`}>
+      {body}
+    </p>
+
+    {(stats.length > 0 || linkHref) && (
+      <div class="flex flex-wrap items-center gap-6 mt-10">
+        {stats.map((stat) => (
+          <div class={`border rounded-lg px-6 py-4 text-center ${isAccent ? 'border-dark/20' : 'border-white/20'}`}>
+            <p class={`font-heading font-medium text-3xl ${isAccent ? 'text-dark' : 'text-accent'}`}>{stat.value}</p>
+            <p class={`text-sm mt-1 ${isAccent ? 'text-dark/60' : 'text-white/60'}`}>{stat.label}</p>
+          </div>
+        ))}
+        {linkHref && (
+          <a href={linkHref} class={`font-medium hover:underline ml-auto ${isAccent ? 'text-dark' : 'text-accent'}`}>{linkText} &rarr;</a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

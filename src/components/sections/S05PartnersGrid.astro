@@ -1,0 +1,66 @@
+<!-- Section 05 — Partners Grid | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:146 -->
+<section data-figma-ref="8:146" class="bg-white py-20 sm:py-28 lg:py-32">
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section label -->
+    <p class="text-xs uppercase tracking-widest text-gray-text mb-4">Partners I Trust</p>
+    <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
+
+    <!-- 2-col heading -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 mb-12 sm:mb-16">
+      <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        I don't sell one brand. I find the right one for your business.
+      </h2>
+      <p class="text-gray-text leading-relaxed self-end">
+        I work with these providers because I've used them in my own businesses. Different setups need different solutions &mdash; my job is to match the right one to yours.
+      </p>
+    </div>
+
+    <!-- 2-col content: device image + brand tiles -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Left: device image -->
+      <div>
+        <div class="w-full aspect-[4/3] bg-navy rounded-2xl overflow-hidden flex items-center justify-center p-8">
+          <img
+            src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/Gemini_Generated_Image_zcs84pzcs84pzcs8.png"
+            alt="Tablet device"
+            class="max-w-full max-h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Right: brand tiles grid + link -->
+      <div class="flex flex-col justify-center">
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-8">
+          {[
+            { name: "Bonjoro", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/bonjoro-mark.svg.webp" },
+            { name: "Calendly", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/calendly-mark.svg.webp" },
+            { name: "CallRail", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/callrail-mark.svg.webp" },
+            { name: "Deadline Funnels", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/deadlinefunnel-mark.svg-1.webp" },
+            { name: "Eventbrite", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/eventbrite-mark.svg.webp" },
+            { name: "Google Sheets", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/googlesheets-mark.svg.webp" },
+            { name: "Make", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/make-mark.svg.webp" },
+            { name: "PayPal", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/paypal-mark.svg.webp" },
+            { name: "Salesforce", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/salesforce-mark.svg.webp" },
+            { name: "Shopify", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/shopify-mark.svg.webp" },
+            { name: "Slack", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/slack-mark.svg.webp" },
+            { name: "Square", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/square-mark.svg.webp" },
+            { name: "Zoom", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/zoom-mark.svg.webp" },
+            { name: "Stripe", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/stripe-mark.svg.webp" },
+            { name: "WooCommerce", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/woocommerce-mark.svg.webp" },
+            { name: "WordPress", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/wordpress-mark.svg.webp" },
+            { name: "Zapier", icon: "https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/zapier-mark.svg.webp" },
+          ].map((brand) => (
+            <div class="bg-white border border-gray-200 rounded-lg py-3 px-4 flex items-center gap-2.5">
+              <img src={brand.icon} alt={brand.name} class="w-6 h-6 object-contain shrink-0" />
+              <span class="text-sm font-medium text-dark">{brand.name}</span>
+            </div>
+          ))}
+        </div>
+        <a href="/partners" class="text-sm font-semibold text-[#2d8a6e] hover:underline transition-colors flex items-center gap-1.5">
+          See all 99+ integrations
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

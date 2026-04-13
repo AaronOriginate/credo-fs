@@ -1,0 +1,61 @@
+<!-- Figma node: 4:929 — ContactForm -->
+<section class="bg-gradient-to-b from-light-gray to-white w-full">
+  <div class="max-w-[1232px] mx-auto px-8 py-24">
+    <!-- Section label RIGHT-ALIGNED + yellow divider -->
+    <p class="font-body font-medium text-sm text-dark tracking-[2px] uppercase text-right">
+      Contact
+    </p>
+    <div class="border-t border-accent mt-4"></div>
+
+    <!-- Heading -->
+    <h2 class="font-heading font-medium text-[56px] leading-[70px] tracking-[-1.4px] text-dark text-center mt-12">
+      Tell me a bit about yourself.
+    </h2>
+
+    <!-- Navy form card -->
+    <div class="bg-navy rounded-lg p-12 mt-12">
+      <form class="flex flex-col gap-0">
+        <!-- Name field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">Your name</label>
+          <input type="text" name="name" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 placeholder:text-white/40 p-0" placeholder="Enter your name" />
+        </div>
+
+        <!-- Venue type field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">What kind of venue do you run?</label>
+          <input type="text" name="venue_type" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 placeholder:text-white/40 p-0" placeholder="e.g. Pub, Restaurant, Cafe, Bar, Club" />
+        </div>
+
+        <!-- What are you looking for field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">What are you looking for?</label>
+          <input type="text" name="looking_for" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 placeholder:text-white/40 p-0" placeholder="e.g. Review of my current setup, New till system, New card machine, Not sure yet" />
+        </div>
+
+        <!-- Message field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">Anything you'd like me to know before we chat?</label>
+          <textarea name="message" rows="3" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 resize-none placeholder:text-white/40 p-0" placeholder="Tell me a bit about your business"></textarea>
+        </div>
+
+        <!-- Email field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">Email address</label>
+          <input type="email" name="email" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 placeholder:text-white/40 p-0" placeholder="you@example.com" />
+        </div>
+
+        <!-- Phone field -->
+        <div class="border-b-2 border-accent pb-6 pt-8">
+          <label class="block font-heading font-medium text-lg text-white tracking-[-0.4px]">Phone number</label>
+          <input type="tel" name="phone" class="w-full bg-transparent border-none text-white/70 text-base mt-3 outline-none focus:outline-none focus:ring-0 placeholder:text-white/40 p-0" placeholder="Your phone number" />
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="bg-accent rounded-lg py-4 mt-10 font-heading font-semibold text-dark text-lg w-full hover:brightness-95 transition-all">
+          Send message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

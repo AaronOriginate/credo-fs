@@ -1,0 +1,28 @@
+---
+/** ContactCta — Figma node 4:485 */
+interface Props {
+  heading?: string;
+  subtext?: string;
+  hint?: string;
+}
+const {
+  heading = "Let's have a chat.",
+  subtext = "No sales pitch. No contract to sign. Just a conversation about what might work for your business.",
+  hint = "Pick whichever suits you:",
+} = Astro.props;
+---
+
+<section class="bg-navy w-full">
+  <div class="max-w-[1232px] mx-auto px-8 py-24">
+    <h2 class="font-heading font-medium text-[80px] leading-tight tracking-tight text-white text-center">{heading}</h2>
+    <p class="text-lg leading-relaxed text-white/70 text-center max-w-[700px] mx-auto mt-6">{subtext}</p>
+    <p class="text-base text-white/50 text-center mt-3">{hint}</p>
+
+    <!-- Buttons row -->
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
+        Let's have a chat
+      </a>
+    </div>
+  </div>
+</section>

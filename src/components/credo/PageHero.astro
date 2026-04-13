@@ -1,0 +1,88 @@
+---
+/** PageHero — S02Hero for home (large/centered) + S12/S05 pattern for sub-pages (left-aligned) */
+interface Props {
+  heading: string;
+  subtext?: string;
+  eyebrow?: string;
+  body?: string[];
+  size?: 'large' | 'default';
+}
+const {
+  heading,
+  subtext,
+  eyebrow,
+  body,
+  size = 'default',
+} = Astro.props;
+
+const isLarge = size === 'large';
+---
+
+<!-- Section 02 — Hero | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:24 -->
+<section data-figma-ref="8:24" class={`relative overflow-hidden py-24 sm:py-32 lg:py-40 ${isLarge ? 'bg-white' : 'bg-navy'}`}>
+  <!-- Top-left yellow triangle -->
+  <svg
+    class="absolute top-0 left-0 w-24 sm:w-32 lg:w-48 h-24 sm:h-32 lg:h-48"
+    viewBox="0 0 200 200"
+    fill="none"
+    aria-hidden="true"
+  >
+    <polygon points="0,0 200,0 0,200" fill="var(--color-accent)" />
+  </svg>
+
+  <!-- Top-right yellow triangle -->
+  <svg
+    class="absolute top-0 right-0 w-24 sm:w-32 lg:w-48 h-24 sm:h-32 lg:h-48"
+    viewBox="0 0 200 200"
+    fill="none"
+    aria-hidden="true"
+  >
+    <polygon points="0,0 200,0 200,200" fill="var(--color-accent)" />
+  </svg>
+
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {isLarge ? (
+      <!-- Home page: centered, massive -->
+      <Fragment>
+        {eyebrow && (
+          <p class="text-xs uppercase tracking-widest text-gray-text text-center mb-6">{eyebrow}</p>
+        )}
+        <h1 class="font-heading font-medium text-dark text-center text-4xl sm:text-6xl lg:text-[92px] lg:leading-[1.05] max-w-5xl mx-auto">
+          {heading}
+        </h1>
+        {subtext && (
+          <p class="text-dark text-center text-base sm:text-lg max-w-xl mx-auto mt-6">
+            {subtext}
+          </p>
+        )}
+      </Fragment>
+    ) : (
+      <!-- Sub-pages: left-aligned, smaller, 2-col with body text, navy bg -->
+      <Fragment>
+        {eyebrow && (
+          <p class="text-xs uppercase tracking-widest text-white/60 mb-6">{eyebrow}</p>
+        )}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
+          <h1 class="font-heading font-medium text-white text-3xl sm:text-5xl lg:text-[56px] lg:leading-[1.15] tracking-tight">
+            {heading}
+          </h1>
+          {(body || subtext) && (
+            <div class="flex flex-col justify-end">
+              {body ? (
+                body.map((p, i) => (
+                  <p class={`text-white/70 leading-relaxed ${i < body.length - 1 ? 'mb-4' : ''}`}>
+                    {p}
+                  </p>
+                ))
+              ) : subtext ? (
+                <p class="text-white/70 leading-relaxed">
+                  {subtext}
+                </p>
+              ) : null}
+            </div>
+          )}
+        </div>
+      </Fragment>
+    )}
+  </div>
+</section>

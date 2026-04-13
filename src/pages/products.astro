@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import Narrative from "../components/credo/Narrative.astro";
+import BrandGrid from "../components/credo/BrandGrid.astro";
+import NavyStatement from "../components/credo/NavyStatement.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="Products — Credo FS">
+  <S01Navigation />
+  <PageHero
+    eyebrow="Products"
+    heading="I don't sell systems. I recommend the right one for your business."
+    subtext="I work with a handful of brands I actually trust. Here's what they are and why I chose them."
+  />
+  <Narrative
+    paragraphs={[
+      "There's one thing I look for before I recommend anything: does the till talk to the card machine?",
+      "That sounds obvious, but most pubs and restaurants run two separate systems from two separate companies. Your till does one thing, your card machine does another, and they don't share information. When something goes wrong, you ring one company and they say it's the other one's problem. You spend half your morning bouncing between two support lines instead of running your business.",
+      "Every system I recommend has integrated card processing. That means your till and your card machine work together. One system. One set of reports. And when something plays up, you call one person. Me.",
+    ]}
+  />
+  <BrandGrid />
+  <NavyStatement
+    heading="Nine times out of ten, it's your internet."
+    body="Before I even look at your till or card machine, I ask about your wifi. Most of the tech problems I get called about aren't hardware or software. They're connectivity. A dodgy connection drops card payments, freezes your till mid-service, and sends your kitchen printer offline at 7pm on a Friday. I now offer Starlink installations for hospitality venues. It's fast, it's reliable, and it solves the problem most people didn't realise they had."
+    stats={[]}
+    linkText="Ask me about Starlink"
+    linkHref="/contact"
+    bg="accent"
+  />
+  <ContactCta
+    heading="Not sure which system's right for you?"
+    subtext="That's the whole point of talking to me first. I'll look at what you've got, ask what's driving you mad, and recommend something that actually fits. No obligation. No cost for the conversation."
+    hint="I'd rather you talked to me before buying anything. That's how this works best."
+  />
+  <S10Footer />
+</Layout>

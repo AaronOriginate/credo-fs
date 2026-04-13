@@ -1,0 +1,44 @@
+---
+/** TestimonialBlock — exact copy of S08Testimonials with props */
+interface Props {
+  label?: string;
+  heading?: string;
+  quote: string;
+  name: string;
+  source: string;
+}
+const {
+  label = "Testimonials",
+  heading = "What our customers say",
+  quote,
+  name,
+  source,
+} = Astro.props;
+---
+
+<!-- Section 08 — Testimonials | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:424 -->
+<section data-figma-ref="8:424" class="bg-white py-20 sm:py-28 lg:py-32">
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section label -->
+    <p class="text-xs uppercase tracking-widest text-gray-text mb-4 text-center">{label}</p>
+    <div class="w-12 h-0.5 bg-accent mx-auto mb-12 sm:mb-16"></div>
+
+    <!-- Heading -->
+    <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight text-center mb-12 sm:mb-16">
+      {heading}
+    </h2>
+
+    <!-- Blockquote -->
+    <div class="max-w-3xl mx-auto text-center">
+      <blockquote>
+        <p class="text-lg sm:text-xl lg:text-2xl italic text-gray-text leading-relaxed mb-8">
+          &ldquo;{quote}&rdquo;
+        </p>
+        <footer class="text-sm">
+          <span class="font-bold text-dark">&mdash; {name}</span>
+          <span class="text-gray-text">, {source}</span>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>

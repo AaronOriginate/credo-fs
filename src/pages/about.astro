@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import AboutHospitality from "../components/credo/AboutHospitality.astro";
+import AboutStats from "../components/credo/AboutStats.astro";
+import TestimonialBlock from "../components/credo/TestimonialBlock.astro";
+import AboutPersonal from "../components/credo/AboutPersonal.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="About Andy — Credo FS">
+  <S01Navigation />
+  <PageHero
+    eyebrow="About Andy"
+    heading="There's a moment I keep coming back to."
+    body={[
+      "I'm twenty-three, navigating a container ship through a typhoon off the coast of Japan, and the only thing between us and the rocks is a compass, a chart, and whether I'd done my job properly.",
+      "The Merchant Navy teaches you something that sticks. When it matters, people don't want a system. They want a person who knows what they're doing and picks up the phone.",
+    ]}
+  />
+  <AboutHospitality />
+  <AboutStats />
+  <!-- Proof narrative -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs uppercase tracking-widest text-gray-text mb-4">Proof</p>
+      <div class="w-12 h-0.5 bg-accent mb-12"></div>
+      <div class="max-w-3xl">
+        <p class="text-gray-text leading-relaxed mb-6">
+          Sallyann Reed has been a client for five years now. When there's a better deal out there for her business, I let her know. When something goes wrong, she calls me. Not a helpline. Not a chatbot queue. Me.
+        </p>
+        <p class="text-gray-text leading-relaxed">
+          That's how it should work. And for most of my clients, it does. About 70% of the people I work with came through a recommendation from someone I'd already helped. I don't run ads. I don't cold-call. I just do the work properly and let people talk.
+        </p>
+      </div>
+    </div>
+  </section>
+  <TestimonialBlock
+    label="Proof"
+    heading="Five years and counting"
+    quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change. Peace of mind knowing that if there's an issue I can call him and it will be rectified very quickly."
+    name="Sallyann Reed"
+    source="Five years as a customer — TrustPilot"
+  />
+  <!-- Link to reviews -->
+  <div class="bg-white pb-12 -mt-8">
+    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+      <a href="/reviews" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+        Read all reviews on TrustPilot &rarr;
+      </a>
+    </div>
+  </div>
+  <AboutPersonal />
+  <ContactCta
+    heading="If you're not sure whether you're getting a fair deal, let's find out."
+    subtext="A conversation costs nothing. I'll look at what you've got, tell you straight, and if there's nothing to change, I'll say so."
+    hint="No sales pitch. No obligation. Just a straight conversation."
+  />
+  <S10Footer />
+</Layout>

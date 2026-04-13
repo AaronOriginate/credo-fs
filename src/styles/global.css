@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1a2d46;
+  --color-accent: #e8ea3a;
+  --color-dark: #0f1419;
+  --color-gray-text: #4a5568;
+  --color-light-gray: #f3f4f6;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --max-width-container: 1232px;
+}
+
+/* Fonts loaded from Google Fonts via Layout.astro <link> tags
+   — matches the exact same source as the vibe page template */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+}

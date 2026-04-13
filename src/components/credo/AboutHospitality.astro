@@ -1,0 +1,128 @@
+---
+/** AboutHospitality — exact copy of S04FeaturesAccordion with About page content */
+---
+
+<!-- Section 04 — Features Accordion | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:107 -->
+<section data-figma-ref="8:107" class="bg-white py-20 sm:py-28 lg:py-32">
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section label -->
+    <p class="text-xs uppercase tracking-widest text-gray-text mb-4">The hospitality years</p>
+    <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
+
+    <!-- 2-col grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Left: heading + accordion -->
+      <div>
+        <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6">
+          Twenty years in hospitality. Then I ran my own.
+        </h2>
+        <p class="text-gray-text mb-10">
+          I came ashore and landed in hospitality. Twenty years with Whitbread. Started as a Regional Sales Manager, worked my way to Account Director looking after the Punch Taverns estate. That's roughly 9,000 pubs.
+        </p>
+
+        <!-- Accordion -->
+        <div class="flex flex-col" id="about-accordion">
+          <!-- Item 1 (open by default) -->
+          <div class="accordion-item border-b border-accent" data-open="true">
+            <button
+              class="accordion-trigger w-full text-left py-5 flex items-center justify-between gap-4 bg-transparent border-0 cursor-pointer"
+              aria-expanded="true"
+            >
+              <span class="font-heading font-medium text-dark text-lg">
+                Nine thousand different setups
+              </span>
+              <svg class="accordion-icon w-5 h-5 shrink-0 text-dark transition-transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content pb-6">
+              <p class="text-gray-text text-sm leading-relaxed">
+                Nine thousand landlords, nine thousand opinions on what works and what doesn't. I completed the first company-sponsored MBA while I was there, helped shape commercial strategy at HQ, and somewhere along the way got Bristol Rugby a sponsorship deal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item border-b border-accent" data-open="false">
+            <button
+              class="accordion-trigger w-full text-left py-5 flex items-center justify-between gap-4 bg-transparent border-0 cursor-pointer"
+              aria-expanded="false"
+            >
+              <span class="font-heading font-medium text-dark text-lg">
+                Then I stood behind the bar myself
+              </span>
+              <svg class="accordion-icon w-5 h-5 shrink-0 text-dark transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content hidden pb-6">
+              <p class="text-gray-text text-sm leading-relaxed">
+                I ran my own pubs, bars, and restaurants. Stood behind the bar. Dealt with the Friday night card machine crash. Opened the statement on Monday morning and thought: how is it possible that nobody can explain this to me in plain English?
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item border-b border-accent" data-open="false">
+            <button
+              class="accordion-trigger w-full text-left py-5 flex items-center justify-between gap-4 bg-transparent border-0 cursor-pointer"
+              aria-expanded="false"
+            >
+              <span class="font-heading font-medium text-dark text-lg">
+                That question never went away
+              </span>
+              <svg class="accordion-icon w-5 h-5 shrink-0 text-dark transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content hidden pb-6">
+              <p class="text-gray-text text-sm leading-relaxed">
+                Why can nobody in this industry explain what you're paying? That question followed me from the bar to the boardroom. Nobody could answer it. So I decided to be the person who does.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: placeholder image -->
+      <div class="flex items-center">
+        <div class="w-full aspect-[4/3] bg-navy rounded-2xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const aboutAccordion = document.getElementById("about-accordion");
+  if (aboutAccordion) {
+    const triggers = aboutAccordion.querySelectorAll(".accordion-trigger");
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const item = trigger.closest(".accordion-item");
+        if (!item) return;
+        const isOpen = item.getAttribute("data-open") === "true";
+
+        // Close all
+        aboutAccordion.querySelectorAll(".accordion-item").forEach((el) => {
+          el.setAttribute("data-open", "false");
+          const content = el.querySelector(".accordion-content");
+          const icon = el.querySelector(".accordion-icon");
+          const btn = el.querySelector(".accordion-trigger");
+          if (content) content.classList.add("hidden");
+          if (icon) icon.classList.remove("rotate-180");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+
+        // Open clicked (if it was closed)
+        if (!isOpen) {
+          item.setAttribute("data-open", "true");
+          const content = item.querySelector(".accordion-content");
+          const icon = item.querySelector(".accordion-icon");
+          if (content) content.classList.remove("hidden");
+          if (icon) icon.classList.add("rotate-180");
+          trigger.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+</script>

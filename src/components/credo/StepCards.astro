@@ -1,0 +1,112 @@
+---
+/** StepCards — Figma node 4:62 */
+---
+
+<section class="bg-white w-full">
+  <div class="max-w-[1232px] mx-auto px-8 py-24">
+    <!-- Section label -->
+    <p class="uppercase text-sm font-medium tracking-[2px] text-dark">
+      How it works
+    </p>
+
+    <!-- Yellow divider -->
+    <div class="border-t-2 border-accent mt-4"></div>
+
+    <!-- Two-column layout -->
+    <div class="flex flex-row gap-12 mt-12">
+      <!-- Left column (~50%) -->
+      <div class="w-1/2">
+        <!-- Large heading -->
+        <h2 class="font-heading font-medium text-[48px] leading-tight tracking-[-1.2px] text-dark">
+          We talk. I look at your setup. I stick around.
+        </h2>
+
+        <!-- Body text -->
+        <p class="text-base text-gray-text mt-4">
+          No hard sell, no jargon. I look at what you've got, tell you if you're overpaying, and find something better if it exists. Then I stick around to make sure it actually works.
+        </p>
+
+        <!-- Accordion items -->
+        <div class="mt-8 flex flex-col">
+          <!-- Item 1 (expanded) -->
+          <div class="border-b-2 border-accent" data-accordion-item>
+            <button class="w-full flex items-center justify-between py-5" data-accordion-trigger>
+              <span class="font-heading font-medium text-lg tracking-[-0.5px] text-dark">We have a conversation</span>
+              <svg class="w-4 h-4 shrink-0 transition-transform duration-200" data-accordion-icon viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="pb-5" data-accordion-content>
+              <p class="text-[22px] leading-[38.5px] text-dark">
+                You tell me what you've got, what's driving you mad, and what you actually need. It's free, there's no commitment, and it's just a straight conversation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 (collapsed) -->
+          <div class="border-b-2 border-accent" data-accordion-item>
+            <button class="w-full flex items-center justify-between py-5" data-accordion-trigger>
+              <span class="font-heading font-medium text-lg tracking-[-0.5px] text-dark">I review your setup</span>
+              <svg class="w-4 h-4 shrink-0 transition-transform duration-200" data-accordion-icon viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="hidden pb-5" data-accordion-content>
+              <p class="text-[22px] leading-[38.5px] text-dark">
+                Your till, your card machine, your statements, your contract. If you're overpaying, I'll show you where. If there's something better out there, I'll find it. And if it turns out you're already sorted, I'll tell you that too.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 (collapsed) -->
+          <div class="border-b-2 border-accent" data-accordion-item>
+            <button class="w-full flex items-center justify-between py-5" data-accordion-trigger>
+              <span class="font-heading font-medium text-lg tracking-[-0.5px] text-dark">I stick around when things go wrong</span>
+              <svg class="w-4 h-4 shrink-0 transition-transform duration-200" data-accordion-icon viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="hidden pb-5" data-accordion-content>
+              <p class="text-[22px] leading-[38.5px] text-dark">
+                This is where most providers vanish. I don't. When your system goes down at 7pm on a Friday, you've got my number. One person to call. Not a ticket queue. Me.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column (~50%): navy image placeholder -->
+      <div class="w-1/2">
+        <div class="bg-navy rounded-lg overflow-hidden aspect-[3/4]">
+          <img src="/images/credo/step-devices.png" alt="POS and card machine devices" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-accordion-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('[data-accordion-item]');
+      const content = item?.querySelector('[data-accordion-content]');
+      const icon = item?.querySelector('[data-accordion-icon]');
+      if (!content || !icon) return;
+
+      const isHidden = content.classList.contains('hidden');
+
+      // Close all items in this accordion
+      const parent = item.parentElement;
+      if (parent) {
+        parent.querySelectorAll('[data-accordion-content]').forEach((c) => c.classList.add('hidden'));
+        parent.querySelectorAll('[data-accordion-icon]').forEach((i) => i.classList.remove('rotate-180'));
+      }
+
+      // Toggle clicked item
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

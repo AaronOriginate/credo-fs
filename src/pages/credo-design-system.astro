@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroHome from '../components/credo/HeroHome.astro';
+import PageHeader from '../components/credo/PageHeader.astro';
+import NarrativeBlock from '../components/credo/NarrativeBlock.astro';
+import NavyStatement from '../components/credo/NavyStatement.astro';
+import StepCards from '../components/credo/StepCards.astro';
+import ProcessGrid from '../components/credo/ProcessGrid.astro';
+import TwoPathCards from '../components/credo/TwoPathCards.astro';
+import SingleQuote from '../components/credo/SingleQuote.astro';
+import ContactCta from '../components/credo/ContactCta.astro';
+import CtaBand from '../components/credo/CtaBand.astro';
+import PatternBridge from '../components/credo/PatternBridge.astro';
+import BrandGrid from '../components/credo/BrandGrid.astro';
+import FeatureSection from '../components/credo/FeatureSection.astro';
+import TrustpilotSummary from '../components/credo/TrustpilotSummary.astro';
+import ReviewCards from '../components/credo/ReviewCards.astro';
+import ThemeStats from '../components/credo/ThemeStats.astro';
+import ContactMethodCards from '../components/credo/ContactMethodCards.astro';
+import ContactForm from '../components/credo/ContactForm.astro';
+import SocialLinks from '../components/credo/SocialLinks.astro';
+import PersonalSection from '../components/credo/PersonalSection.astro';
+import ReassuranceText from '../components/credo/ReassuranceText.astro';
+import StatsGrid from '../components/credo/StatsGrid.astro';
+import PartnersGrid from '../components/credo/PartnersGrid.astro';
+import FeatureCards from '../components/credo/FeatureCards.astro';
+
+const sections = [
+  { id: 'hero-home', name: 'HeroHome', page: 'Home S1', desc: 'Full hero with photo, headline, strapline, 2 CTAs' },
+  { id: 'page-header', name: 'PageHeader', page: 'Products S1, Reviews S1', desc: 'Inner page header' },
+  { id: 'narrative-block', name: 'NarrativeBlock', page: 'Home S2, About S2, Products S2', desc: 'Two-col image + text' },
+  { id: 'navy-statement', name: 'NavyStatement', page: 'Home S3, About S3', desc: 'Large statement text' },
+  { id: 'step-cards', name: 'StepCards', page: 'Home S4', desc: 'Three numbered process cards' },
+  { id: 'process-grid', name: 'ProcessGrid', page: 'Consultancy S4', desc: 'Stats grid on navy' },
+  { id: 'two-path-cards', name: 'TwoPathCards', page: 'Home S5', desc: 'Two equal CTA cards' },
+  { id: 'single-quote', name: 'SingleQuote', page: 'Home S6, About S4', desc: 'Featured testimonial' },
+  { id: 'contact-cta', name: 'ContactCta', page: 'Home S7, Products S5', desc: 'Navy heading + 3 buttons' },
+  { id: 'cta-band', name: 'CtaBand', page: 'About S6, Consultancy S7', desc: 'Centered soft CTA' },
+  { id: 'pattern-bridge', name: 'PatternBridge', page: 'Consultancy S2', desc: 'Short centered text bridge' },
+  { id: 'brand-grid', name: 'BrandGrid', page: 'Products S3', desc: 'Brand tiles' },
+  { id: 'feature-section', name: 'FeatureSection', page: 'Products S4', desc: 'Connectivity feature block' },
+  { id: 'trustpilot-summary', name: 'TrustpilotSummary', page: 'Reviews S2', desc: 'Aggregate rating' },
+  { id: 'review-cards', name: 'ReviewCards', page: 'Reviews S3', desc: 'Stacked review cards' },
+  { id: 'theme-stats', name: 'ThemeStats', page: 'Reviews S4', desc: 'Review theme rows' },
+  { id: 'contact-method-cards', name: 'ContactMethodCards', page: 'Contact S2', desc: 'Three contact method cards' },
+  { id: 'contact-form', name: 'ContactForm', page: 'Contact S3', desc: 'Contact form' },
+  { id: 'social-links', name: 'SocialLinks', page: 'Contact S4', desc: 'Email + social links' },
+  { id: 'personal-section', name: 'PersonalSection', page: 'About S5', desc: 'Personal details' },
+  { id: 'reassurance-text', name: 'ReassuranceText', page: 'Contact S5', desc: 'Reassurance paragraph' },
+  { id: 'stats-grid', name: 'StatsGrid', page: 'Home, Consultancy', desc: 'Navy bg stats with big numbers' },
+  { id: 'partners-grid', name: 'PartnersGrid', page: 'Products', desc: 'Brand tiles with device image' },
+  { id: 'feature-cards', name: 'FeatureCards', page: 'Home, Consultancy', desc: 'Icon cards on light gray bg' },
+];
+---
+
+<Layout title="Credo FS — Design System">
+  <!-- Index header -->
+  <div class="bg-navy py-12 sm:py-16">
+    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-accent text-xs uppercase tracking-widest mb-2">Design System</p>
+      <h1 class="font-heading font-medium text-white text-3xl sm:text-4xl lg:text-5xl mb-4">Credo FS</h1>
+      <p class="text-white/60 text-sm mb-8">24 section types. Each section contains Credo content.</p>
+      <div class="flex flex-wrap gap-2">
+        {sections.map((s) => (
+          <a href={`#${s.id}`} class="text-xs bg-white/10 text-white/80 hover:text-white hover:bg-white/20 px-3 py-1.5 rounded-full transition">
+            {s.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- 01: HeroHome -->
+  <div id="hero-home" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">01</span><span class="text-white font-heading font-bold text-sm">HeroHome</span><span class="text-white/40 text-xs">Home S1</span></div></div>
+    <HeroHome />
+  </div>
+
+  <!-- 02: PageHeader -->
+  <div id="page-header" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">02</span><span class="text-white font-heading font-bold text-sm">PageHeader</span><span class="text-white/40 text-xs">Products S1</span></div></div>
+    <PageHeader />
+  </div>
+
+  <!-- 03: NarrativeBlock -->
+  <div id="narrative-block" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">03</span><span class="text-white font-heading font-bold text-sm">NarrativeBlock</span><span class="text-white/40 text-xs">Home S2</span></div></div>
+    <NarrativeBlock />
+  </div>
+
+  <!-- 04: NavyStatement -->
+  <div id="navy-statement" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">04</span><span class="text-white font-heading font-bold text-sm">NavyStatement</span><span class="text-white/40 text-xs">Home S3</span></div></div>
+    <NavyStatement />
+  </div>
+
+  <!-- 05: StepCards -->
+  <div id="step-cards" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">05</span><span class="text-white font-heading font-bold text-sm">StepCards</span><span class="text-white/40 text-xs">Home S4</span></div></div>
+    <StepCards />
+  </div>
+
+  <!-- 06: ProcessGrid -->
+  <div id="process-grid" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">06</span><span class="text-white font-heading font-bold text-sm">ProcessGrid</span><span class="text-white/40 text-xs">Consultancy S4</span></div></div>
+    <ProcessGrid />
+  </div>
+
+  <!-- 07: TwoPathCards -->
+  <div id="two-path-cards" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">07</span><span class="text-white font-heading font-bold text-sm">TwoPathCards</span><span class="text-white/40 text-xs">Home S5</span></div></div>
+    <TwoPathCards />
+  </div>
+
+  <!-- 08: SingleQuote -->
+  <div id="single-quote" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">08</span><span class="text-white font-heading font-bold text-sm">SingleQuote</span><span class="text-white/40 text-xs">Home S6</span></div></div>
+    <SingleQuote />
+  </div>
+
+  <!-- 09: ContactCta -->
+  <div id="contact-cta" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">09</span><span class="text-white font-heading font-bold text-sm">ContactCta</span><span class="text-white/40 text-xs">Home S7</span></div></div>
+    <ContactCta />
+  </div>
+
+  <!-- 10: CtaBand -->
+  <div id="cta-band" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">10</span><span class="text-white font-heading font-bold text-sm">CtaBand</span><span class="text-white/40 text-xs">Consultancy S7</span></div></div>
+    <CtaBand />
+  </div>
+
+  <!-- 11: PatternBridge -->
+  <div id="pattern-bridge" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">11</span><span class="text-white font-heading font-bold text-sm">PatternBridge</span><span class="text-white/40 text-xs">Consultancy S2</span></div></div>
+    <PatternBridge />
+  </div>
+
+  <!-- 12: BrandGrid -->
+  <div id="brand-grid" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">12</span><span class="text-white font-heading font-bold text-sm">BrandGrid</span><span class="text-white/40 text-xs">Products S3</span></div></div>
+    <BrandGrid />
+  </div>
+
+  <!-- 13: FeatureSection -->
+  <div id="feature-section" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">13</span><span class="text-white font-heading font-bold text-sm">FeatureSection</span><span class="text-white/40 text-xs">Products S4</span></div></div>
+    <FeatureSection />
+  </div>
+
+  <!-- 14: TrustpilotSummary -->
+  <div id="trustpilot-summary" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">14</span><span class="text-white font-heading font-bold text-sm">TrustpilotSummary</span><span class="text-white/40 text-xs">Reviews S2</span></div></div>
+    <TrustpilotSummary />
+  </div>
+
+  <!-- 15: ReviewCards -->
+  <div id="review-cards" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">15</span><span class="text-white font-heading font-bold text-sm">ReviewCards</span><span class="text-white/40 text-xs">Reviews S3</span></div></div>
+    <ReviewCards />
+  </div>
+
+  <!-- 16: ThemeStats -->
+  <div id="theme-stats" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">16</span><span class="text-white font-heading font-bold text-sm">ThemeStats</span><span class="text-white/40 text-xs">Reviews S4</span></div></div>
+    <ThemeStats />
+  </div>
+
+  <!-- 17: ContactMethodCards -->
+  <div id="contact-method-cards" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">17</span><span class="text-white font-heading font-bold text-sm">ContactMethodCards</span><span class="text-white/40 text-xs">Contact S2</span></div></div>
+    <ContactMethodCards />
+  </div>
+
+  <!-- 18: ContactForm -->
+  <div id="contact-form-section" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">18</span><span class="text-white font-heading font-bold text-sm">ContactForm</span><span class="text-white/40 text-xs">Contact S3</span></div></div>
+    <ContactForm />
+  </div>
+
+  <!-- 19: SocialLinks -->
+  <div id="social-links" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">19</span><span class="text-white font-heading font-bold text-sm">SocialLinks</span><span class="text-white/40 text-xs">Contact S4</span></div></div>
+    <SocialLinks />
+  </div>
+
+  <!-- 20: PersonalSection -->
+  <div id="personal-section" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">20</span><span class="text-white font-heading font-bold text-sm">PersonalSection</span><span class="text-white/40 text-xs">About S5</span></div></div>
+    <PersonalSection />
+  </div>
+
+  <!-- 21: ReassuranceText -->
+  <div id="reassurance-text" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">21</span><span class="text-white font-heading font-bold text-sm">ReassuranceText</span><span class="text-white/40 text-xs">Contact S5</span></div></div>
+    <ReassuranceText />
+  </div>
+
+  <!-- 22: StatsGrid -->
+  <div id="stats-grid" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">22</span><span class="text-white font-heading font-bold text-sm">StatsGrid</span><span class="text-white/40 text-xs">Home, Consultancy</span></div></div>
+    <StatsGrid />
+  </div>
+
+  <!-- 23: PartnersGrid -->
+  <div id="partners-grid" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">23</span><span class="text-white font-heading font-bold text-sm">PartnersGrid</span><span class="text-white/40 text-xs">Products</span></div></div>
+    <PartnersGrid />
+  </div>
+
+  <!-- 24: FeatureCards -->
+  <div id="feature-cards" class="border-t-4 border-accent">
+    <div class="bg-dark py-3 px-4"><div class="max-w-[1232px] mx-auto flex items-center gap-4"><span class="text-accent font-mono text-xs">24</span><span class="text-white font-heading font-bold text-sm">FeatureCards</span><span class="text-white/40 text-xs">Home, Consultancy</span></div></div>
+    <FeatureCards />
+  </div>
+</Layout>

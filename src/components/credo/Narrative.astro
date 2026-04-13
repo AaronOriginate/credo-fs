@@ -1,0 +1,41 @@
+---
+/** Narrative — exact copy of S13NarrativeBlock with props for text */
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  paragraphs: string[];
+  bg?: 'white' | 'light-gray';
+  reverse?: boolean;
+}
+const {
+  imageSrc,
+  imageAlt = "",
+  paragraphs,
+  bg = "white",
+  reverse = false,
+} = Astro.props;
+
+const bgClass = bg === 'light-gray' ? 'bg-light-gray' : 'bg-white';
+---
+
+<!-- Section 13 — Narrative Block | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=4:38 -->
+<section data-figma-ref="4:38" class={`${bgClass} py-16 sm:py-24 lg:py-28`}>
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <!-- Image -->
+      <div class={`aspect-[4/3] bg-navy rounded-2xl ${reverse ? 'lg:order-2' : ''}`}>
+        {imageSrc && (
+          <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover rounded-2xl" />
+        )}
+      </div>
+      <!-- Narrative -->
+      <div class={`flex flex-col justify-center ${reverse ? 'lg:order-1' : ''}`}>
+        {paragraphs.map((p, i) => (
+          <p class={`text-gray-text leading-relaxed ${i < paragraphs.length - 1 ? 'mb-6' : ''}`}>
+            {p}
+          </p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

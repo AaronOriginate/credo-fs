@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import HeroHome from "../components/credo/HeroHome.astro";
+import NarrativeBlock from "../components/credo/NarrativeBlock.astro";
+import NavyStatement from "../components/credo/NavyStatement.astro";
+import StepCards from "../components/credo/StepCards.astro";
+import TwoPathCards from "../components/credo/TwoPathCards.astro";
+import SingleQuote from "../components/credo/SingleQuote.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import StatsGrid from "../components/credo/StatsGrid.astro";
+import CtaBand from "../components/credo/CtaBand.astro";
+import TrustpilotSummary from "../components/credo/TrustpilotSummary.astro";
+import FeatureCards from "../components/credo/FeatureCards.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="Credo FS — Independent EPOS & Payment Solutions for Hospitality">
+  <S01Navigation />
+
+  <!-- S1: Hero — white bg -->
+  <HeroHome />
+
+  <!-- S2: Problem validation — light gray bg wrapper -->
+  <div class="bg-light-gray">
+    <NarrativeBlock />
+  </div>
+
+  <!-- S3: The alternative — navy bg (built-in) -->
+  <NavyStatement />
+
+  <!-- S4: How it works — white bg -->
+  <StepCards />
+
+  <!-- S5: Stats — navy bg (built-in) -->
+  <StatsGrid />
+
+  <!-- S6: Lime accent band — full width breaker -->
+  <CtaBand />
+
+  <!-- S7: Two paths — light gray bg wrapper -->
+  <div class="bg-light-gray">
+    <TwoPathCards />
+  </div>
+
+  <!-- S8: What it means — feature cards on light gray (built-in) -->
+  <FeatureCards />
+
+  <!-- S9: Proof — white bg -->
+  <TrustpilotSummary />
+  <SingleQuote />
+
+  <!-- S10: Final CTA — navy bg (built-in) -->
+  <ContactCta />
+
+  <S10Footer />
+</Layout>

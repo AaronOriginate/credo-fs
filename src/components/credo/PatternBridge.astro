@@ -1,0 +1,25 @@
+---
+/** PatternBridge — exact copy of S19CtaBandGray with props */
+interface Props {
+  heading: string;
+  linkText?: string;
+  linkHref?: string;
+}
+const { heading, linkText, linkHref } = Astro.props;
+---
+
+<!-- Section 19 — CTA Band Gray | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=4:764 -->
+<section data-figma-ref="4:764" class="bg-accent py-24 sm:py-32 lg:py-40">
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading font-medium text-dark text-center text-3xl sm:text-5xl lg:text-[56px] lg:leading-[1.25] tracking-tight max-w-[990px] mx-auto">
+      {heading}
+    </h2>
+    {linkText && linkHref && (
+      <div class="flex justify-center mt-10">
+        <a href={linkHref} class="inline-flex items-center justify-center px-8 py-4 bg-navy text-white font-body font-semibold text-base rounded-lg hover:bg-navy/90 transition-colors">
+          {linkText}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

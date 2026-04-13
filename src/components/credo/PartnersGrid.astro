@@ -1,0 +1,61 @@
+---
+/** PartnersGrid — exact copy of S05PartnersGrid with Credo brands */
+interface Props {
+  heading?: string;
+  subtext?: string;
+}
+const {
+  heading = "I don't sell one brand. I find the right one.",
+  subtext = "I work with eight different providers — Square, Teya, Sunmi, Elavon, Shift4, Loyverse, Kuulseats, and Liberis. That means when I look at your setup, I'm not trying to push you toward one product. I'm looking for what actually fits your business. If your current system is working well and your rates are fair, I'll tell you that. Not everyone needs to change.",
+} = Astro.props;
+---
+
+<!-- Section 05 — Partners Grid | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:146 -->
+<section data-figma-ref="8:146" class="bg-white py-20 sm:py-28 lg:py-32">
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section label -->
+    <p class="text-xs uppercase tracking-widest text-gray-text mb-4">Partners I Trust</p>
+    <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
+
+    <!-- 2-col heading -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 mb-12 sm:mb-16">
+      <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        {heading}
+      </h2>
+      <p class="text-gray-text leading-relaxed self-end">
+        {subtext}
+      </p>
+    </div>
+
+    <!-- 2-col content: device image + brand tiles -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Left: device image -->
+      <div>
+        <div class="w-full aspect-[4/3] bg-navy rounded-2xl overflow-hidden flex items-center justify-center p-8">
+          <img
+            src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/Gemini_Generated_Image_zcs84pzcs84pzcs8.png"
+            alt="Tablet device"
+            class="max-w-full max-h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Right: brand tiles grid + link -->
+      <div class="flex flex-col justify-center">
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          {[
+            "Square", "Teya", "Sunmi", "Elavon",
+            "Shift4", "Loyverse", "Kuulseats", "Liberis"
+          ].map((brand) => (
+            <div class="bg-light-gray rounded-lg py-3 px-4 text-center text-sm font-medium text-dark">
+              {brand}
+            </div>
+          ))}
+        </div>
+        <a href="/products" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+          See all partners &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

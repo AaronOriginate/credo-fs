@@ -1,0 +1,700 @@
+---
+import Layout from '../layouts/Layout.astro';
+import S01Navigation from '../components/sections/S01Navigation.astro';
+import S02Hero from '../components/sections/S02Hero.astro';
+import S03Stats from '../components/sections/S03Stats.astro';
+import S04FeaturesAccordion from '../components/sections/S04FeaturesAccordion.astro';
+import S05PartnersGrid from '../components/sections/S05PartnersGrid.astro';
+import S06ProcessGrid from '../components/sections/S06ProcessGrid.astro';
+import S07FeaturesStats from '../components/sections/S07FeaturesStats.astro';
+import S08Testimonials from '../components/sections/S08Testimonials.astro';
+import S09CtaBand from '../components/sections/S09CtaBand.astro';
+import S10Footer from '../components/sections/S10Footer.astro';
+import S11HeroImage from '../components/sections/S11HeroImage.astro';
+import S12Statement from '../components/sections/S12Statement.astro';
+import S13NarrativeBlock from '../components/sections/S13NarrativeBlock.astro';
+import S14CtaBandYellow from '../components/sections/S14CtaBandYellow.astro';
+import S15TwoPathCards from '../components/sections/S15TwoPathCards.astro';
+import S16CtaBandNavyAlt from '../components/sections/S16CtaBandNavyAlt.astro';
+import S17ContactCta from '../components/sections/S17ContactCta.astro';
+import S18ReviewCards from '../components/sections/S18ReviewCards.astro';
+import S19CtaBandGray from '../components/sections/S19CtaBandGray.astro';
+import S20TrustpilotSummary from '../components/sections/S20TrustpilotSummary.astro';
+import S21CustomPlan from '../components/sections/S21CustomPlan.astro';
+import S22FaqAccordion from '../components/sections/S22FaqAccordion.astro';
+import S23ContactForm from '../components/sections/S23ContactForm.astro';
+import S24SupportCards from '../components/sections/S24SupportCards.astro';
+
+const sections = [
+  { id: '01', name: 'Navigation', ref: '8:2', component: 'S01Navigation' },
+  { id: '02', name: 'Hero', ref: '8:24', component: 'S02Hero' },
+  { id: '03', name: 'Stats', ref: '8:30', component: 'S03Stats' },
+  { id: '04', name: 'Features Accordion', ref: '8:107', component: 'S04FeaturesAccordion' },
+  { id: '05', name: 'Partners Grid', ref: '8:146', component: 'S05PartnersGrid' },
+  { id: '06', name: 'Process Grid', ref: '8:276', component: 'S06ProcessGrid' },
+  { id: '07', name: 'Features + Stats', ref: '8:333', component: 'S07FeaturesStats' },
+  { id: '08', name: 'Testimonials', ref: '8:424', component: 'S08Testimonials' },
+  { id: '09', name: 'CTA Band', ref: '8:443', component: 'S09CtaBand' },
+  { id: '10', name: 'Footer', ref: '8:448', component: 'S10Footer' },
+  { id: '11', name: 'Hero with Image', ref: '4:6', component: 'S11HeroImage' },
+  { id: '12', name: 'Statement', ref: '4:33', component: 'S12Statement' },
+  { id: '13', name: 'Narrative Block', ref: '4:38', component: 'S13NarrativeBlock' },
+  { id: '14', name: 'CTA Band Yellow', ref: '4:275', component: 'S14CtaBandYellow' },
+  { id: '15', name: 'Two-Path Cards', ref: '4:432', component: 'S15TwoPathCards' },
+  { id: '16', name: 'CTA Band Navy Alt', ref: '4:485', component: 'S16CtaBandNavyAlt' },
+  { id: '17', name: 'Contact CTA', ref: '4:612', component: 'S17ContactCta' },
+  { id: '18', name: 'Review Cards', ref: '4:663', component: 'S18ReviewCards' },
+  { id: '19', name: 'CTA Band Gray', ref: '4:764', component: 'S19CtaBandGray' },
+  { id: '20', name: 'TrustPilot Summary', ref: '4:770', component: 'S20TrustpilotSummary' },
+  { id: '21', name: 'Custom Plan', ref: '4:851', component: 'S21CustomPlan' },
+  { id: '22', name: 'FAQ Accordion', ref: '4:929', component: 'S22FaqAccordion' },
+  { id: '23', name: 'Contact Form', ref: '4:997', component: 'S23ContactForm' },
+  { id: '24', name: 'Support Cards', ref: '4:1028', component: 'S24SupportCards' },
+];
+
+const figmaFileKey = 'RxueMLDFnpgheWZp4MVk7f';
+---
+
+<Layout title="Design System — Credo FS">
+  <!-- Design System Header -->
+  <div class="bg-dark text-white sticky top-0 z-[100]">
+    <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <h1 class="font-heading font-bold text-lg">Credo FS — Section Library</h1>
+        <span class="text-white/40 text-sm">24 sections</span>
+      </div>
+      <nav class="flex items-center gap-3 text-sm">
+        <a href="/" class="text-white/60 hover:text-white transition-colors">Composed Page</a>
+        <span class="text-white/20">|</span>
+        <a
+          href={`https://www.figma.com/design/${figmaFileKey}`}
+          target="_blank"
+          rel="noopener"
+          class="text-accent hover:text-accent/80 transition-colors"
+        >
+          Figma File &nearr;
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Section Index -->
+  <div class="bg-light-gray border-b border-gray-200">
+    <div class="max-w-[1400px] mx-auto px-6 py-4">
+      <div class="flex flex-wrap gap-2">
+        {sections.map((s) => (
+          <a
+            href={`#section-${s.id}`}
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-dark hover:bg-navy hover:text-white transition-colors border border-gray-200"
+          >
+            <span class="text-accent font-heading font-bold">{s.id}</span>
+            {s.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Sections -->
+  <div class="bg-[#e5e7eb]">
+    {/* Section 01 — Navigation */}
+    <div id="section-01" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">01</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Navigation</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-2`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:2 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S01Navigation />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 02 — Hero */}
+    <div id="section-02" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">02</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Hero</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-24`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:24 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S02Hero />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 03 — Stats */}
+    <div id="section-03" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">03</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Stats</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-30`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:30 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S03Stats />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 04 — Features Accordion */}
+    <div id="section-04" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">04</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Features Accordion</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-107`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:107 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S04FeaturesAccordion />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 05 — Partners Grid */}
+    <div id="section-05" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">05</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Partners Grid</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-146`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:146 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S05PartnersGrid />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 06 — Process Grid */}
+    <div id="section-06" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">06</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Process Grid</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-276`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:276 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S06ProcessGrid />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 07 — Features + Stats */}
+    <div id="section-07" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">07</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Features + Stats</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-333`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:333 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S07FeaturesStats />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 08 — Testimonials */}
+    <div id="section-08" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">08</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Testimonials</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-424`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:424 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S08Testimonials />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 09 — CTA Band */}
+    <div id="section-09" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">09</span>
+            <h2 class="font-heading font-bold text-xl text-dark">CTA Band</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-443`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:443 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S09CtaBand />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 10 — Footer */}
+    <div id="section-10" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">10</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Footer</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=8-448`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:8:448 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S10Footer />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 11 — Hero with Image */}
+    <div id="section-11" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">11</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Hero with Image</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-6`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:6 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S11HeroImage />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 12 — Statement */}
+    <div id="section-12" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">12</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Statement</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-33`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:33 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S12Statement />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 13 — Social Proof */}
+    <div id="section-13" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">13</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Social Proof</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-38`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:38 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S13NarrativeBlock />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 14 — CTA Band Yellow */}
+    <div id="section-14" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">14</span>
+            <h2 class="font-heading font-bold text-xl text-dark">CTA Band Yellow</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-275`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:275 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S14CtaBandYellow />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 15 — Resource Cards */}
+    <div id="section-15" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">15</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Resource Cards</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-432`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:432 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S15TwoPathCards />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 16 — CTA Band Navy Alt */}
+    <div id="section-16" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">16</span>
+            <h2 class="font-heading font-bold text-xl text-dark">CTA Band Navy Alt</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-485`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:485 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S16CtaBandNavyAlt />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 17 — Team Cards */}
+    <div id="section-17" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">17</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Team Cards</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-612`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:612 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S17ContactCta />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 18 — Job Listings */}
+    <div id="section-18" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">18</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Job Listings</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-663`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:663 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S18ReviewCards />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 19 — CTA Band Gray */}
+    <div id="section-19" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">19</span>
+            <h2 class="font-heading font-bold text-xl text-dark">CTA Band Gray</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-764`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:764 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S19CtaBandGray />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 20 — Pricing Plans */}
+    <div id="section-20" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">20</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Pricing Plans</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-770`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:770 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S20TrustpilotSummary />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 21 — Custom Plan */}
+    <div id="section-21" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">21</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Custom Plan</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-851`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:851 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S21CustomPlan />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 22 — FAQ Accordion */}
+    <div id="section-22" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">22</span>
+            <h2 class="font-heading font-bold text-xl text-dark">FAQ Accordion</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-929`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:929 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S22FaqAccordion />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 23 — Contact Form */}
+    <div id="section-23" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">23</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Contact Form</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-997`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:997 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S23ContactForm />
+        </div>
+      </div>
+    </div>
+
+    {/* Section 24 — Support Cards */}
+    <div id="section-24" class="scroll-mt-20">
+      <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-navy text-white font-heading font-bold text-sm rounded-full">24</span>
+            <h2 class="font-heading font-bold text-xl text-dark">Support Cards</h2>
+          </div>
+          <a
+            href={`https://www.figma.com/design/${figmaFileKey}?node-id=4-1028`}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-gray-text hover:text-dark transition-colors font-mono"
+          >
+            figma:4:1028 &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 pb-10">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <S24SupportCards />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import TrustpilotSummary from "../components/credo/TrustpilotSummary.astro";
+import ReviewCards from "../components/credo/ReviewCards.astro";
+import ThemeStats from "../components/credo/ThemeStats.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="Reviews — Credo FS">
+  <S01Navigation />
+  <PageHero
+    heading="Don't take my word for it."
+    subtext="Every review here is from a real hospitality business on TrustPilot. I haven't edited a word."
+  />
+  <TrustpilotSummary />
+  <ReviewCards />
+  <ThemeStats />
+  <!-- Cross-link to About -->
+  <div class="bg-light-gray pb-16 -mt-4">
+    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+      <a href="/about" class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
+        Read Andy's story &rarr;
+      </a>
+    </div>
+  </div>
+  <ContactCta
+    heading="If you're wondering whether it's worth a conversation, it is."
+    subtext="No cost. No commitment. I'll have a look at what you've got and give you a straight answer."
+    hint="Or read the reviews yourself on TrustPilot first. That's fine too."
+  />
+  <S10Footer />
+</Layout>

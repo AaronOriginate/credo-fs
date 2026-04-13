@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import ContactMethodCards from "../components/credo/ContactMethodCards.astro";
+import ContactForm from "../components/credo/ContactForm.astro";
+import SocialLinks from "../components/credo/SocialLinks.astro";
+import ReassuranceText from "../components/credo/ReassuranceText.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="Contact — Credo FS">
+  <S01Navigation />
+  <PageHero
+    heading="Drop me a line. Or a WhatsApp. Whatever works."
+    body={[
+      "No sales pitch. No contract to sign. Just a conversation about what might work for your business.",
+      "I answer personally. Not a call centre, not a ticket system. You'll hear back from me, usually within a few hours.",
+    ]}
+  />
+  <ContactMethodCards />
+  <ContactForm />
+  <SocialLinks />
+  <ReassuranceText />
+  <S10Footer />
+</Layout>

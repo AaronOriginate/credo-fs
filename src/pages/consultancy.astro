@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import ConsultancyStats from "../components/credo/ConsultancyStats.astro";
+import PartnersGrid from "../components/credo/PartnersGrid.astro";
+import ConsultancyProcess from "../components/credo/ConsultancyProcess.astro";
+import TestimonialBlock from "../components/credo/TestimonialBlock.astro";
+import S22FaqAccordion from "../components/sections/S22FaqAccordion.astro";
+import PatternBridge from "../components/credo/PatternBridge.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+---
+
+<Layout title="Consultancy — Credo FS">
+  <S01Navigation />
+  <PageHero
+    heading="Your card machine provider isn't losing sleep over what they charge you."
+    body={[
+      "Last year I sat down with a restaurant owner in Bristol who was convinced she was getting a fair deal. Her provider had told her so. I asked if I could look at her statements.",
+      "She was paying 2.9% on every card transaction. For a venue turning over £15,000 a month in card sales, that's £435 a month in card charges. I moved her to a setup charging 1.1%. Her new monthly cost: £165. That's £270 a month back in her pocket. Over £3,200 a year.",
+      "She'd been overpaying for three years. Nobody had told her. Why would they?",
+    ]}
+  />
+  <ConsultancyStats />
+  <PartnersGrid />
+  <ConsultancyProcess />
+  <TestimonialBlock
+    quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change. Peace of mind knowing that if there's an issue I can call him and it will be rectified very quickly."
+    name="Sallyann Reed"
+    source="Five years as a customer — TrustPilot"
+  />
+  <S22FaqAccordion />
+  <PatternBridge
+    heading="Pubs, restaurants, cafes, bars, and sports clubs. Single sites and small groups."
+    linkText="Book a free conversation"
+    linkHref="/contact"
+  />
+  <ContactCta
+    heading="Book a free conversation."
+    subtext="No sales pitch. No commitment. I'll ask about your setup, have a look at what you're paying, and give you an honest answer. If there's something better out there, I'll find it. If there isn't, I'll say so."
+    hint="Call, WhatsApp, or drop me a message. Completely free."
+  />
+  <S10Footer />
+</Layout>
