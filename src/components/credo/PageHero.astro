@@ -6,6 +6,7 @@ interface Props {
   eyebrow?: string;
   body?: string[];
   size?: 'large' | 'default';
+  bgImage?: string;
 }
 const {
   heading,
@@ -13,32 +14,40 @@ const {
   eyebrow,
   body,
   size = 'default',
+  bgImage,
 } = Astro.props;
 
 const isLarge = size === 'large';
+const bgUrl = bgImage ? `${import.meta.env.BASE_URL}/images/credo/hero-bg-${bgImage}.webp` : null;
 ---
 
 <!-- Section 02 — Hero | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:24 -->
 <section data-figma-ref="8:24" class={`relative overflow-hidden py-24 sm:py-32 lg:py-40 ${isLarge ? 'bg-white' : 'bg-navy'}`}>
-  <!-- Top-left yellow triangle -->
-  <svg
-    class="absolute top-0 left-0 w-24 sm:w-32 lg:w-48 h-24 sm:h-32 lg:h-48"
-    viewBox="0 0 200 200"
-    fill="none"
-    aria-hidden="true"
-  >
-    <polygon points="0,0 200,0 0,200" fill="var(--color-accent)" />
-  </svg>
+  {bgUrl && (
+    <>
+      <img
+        src={bgUrl}
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover z-0"
+        aria-hidden="true"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-navy/55 z-0" aria-hidden="true"></div>
+    </>
+  )}
 
-  <!-- Top-right yellow triangle -->
-  <svg
-    class="absolute top-0 right-0 w-24 sm:w-32 lg:w-48 h-24 sm:h-32 lg:h-48"
-    viewBox="0 0 200 200"
-    fill="none"
-    aria-hidden="true"
-  >
-    <polygon points="0,0 200,0 200,200" fill="var(--color-accent)" />
-  </svg>
+  <!-- Chunky credo graphic, top-left (white variant on navy sub-page hero, navy on home) -->
+  <div class="absolute -top-6 sm:-top-8 -left-4 sm:-left-6 w-[100px] sm:w-[130px] lg:w-[170px] h-auto pointer-events-none z-20">
+    <img
+      src={`${import.meta.env.BASE_URL}/images/credo/${isLarge ? 'hero-credo4.png' : 'hero-credo4-white.png'}`}
+      alt=""
+      width="626"
+      height="744"
+      class="w-full h-auto"
+      aria-hidden="true"
+    />
+  </div>
 
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {isLarge ? (

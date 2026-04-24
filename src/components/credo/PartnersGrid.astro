@@ -6,8 +6,8 @@ interface Props {
   subtext?: string;
 }
 const {
-  heading = "I don't sell one brand. I find the right one.",
-  subtext = "I work with eight different providers — Square, Teya, Sunmi, Elavon, Shift4, Loyverse, Kuulseats, and Liberis. That means when I review your setup, I'm not trying to push you toward one product. I'm looking for what actually fits your business. If your current system is working well and your rates are fair, you'll hear that from me. Not everyone needs to change.",
+  heading = "I don't push one brand, I pick the right one for the job.",
+  subtext = "I work with a handful of brands across tills, card machines, funding, bookings and broadband. Most of what I fit is a Square integrated setup, because it just works better than anything else I've seen. If that isn't right for you I'll put in something else, and if what you've got already does the job I'll tell you that too.",
 } = Astro.props;
 ---
 
@@ -45,8 +45,8 @@ const {
       <div class="flex flex-col justify-center">
         <div class="grid grid-cols-2 gap-3 mb-8">
           {[
-            "Square", "Teya", "Sunmi", "Elavon",
-            "Shift4", "Loyverse", "Kuulseats", "Liberis"
+            "Square", "Teya", "Sunmi", "Shift4",
+            "Loyverse", "Liberis", "U-Lend", "Call Seats"
           ].map((brand) => (
             <div class="bg-light-gray rounded-lg py-3 px-4 text-center text-sm font-medium text-dark">
               {brand}
