@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy v2 Addendum — Credo FS | Originate</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#0C0D0E;
+  --color-bg-elevated:#141516;
+  --color-bg-card:#1A1B1C;
+  --color-accent:#E9F469;
+  --color-accent-hover:#f0f88a;
+  --color-accent-dim:rgba(233,244,105,0.12);
+  --color-accent-border:rgba(233,244,105,0.25);
+  --color-text:#FFFFFF;
+  --color-text-muted:#A0A0A0;
+  --color-text-on-accent:#0C0D0E;
+  --color-border:#2A2B2C;
+  --color-green:#4ADE80;
+  --color-green-bg:rgba(74,222,128,0.08);
+  --color-green-border:rgba(74,222,128,0.25);
+  --color-grey:#9CA3AF;
+  --color-grey-bg:rgba(156,163,175,0.08);
+  --color-grey-border:rgba(156,163,175,0.25);
+  --color-yellow:#FBBF24;
+  --color-yellow-bg:rgba(251,191,36,0.08);
+  --color-yellow-border:rgba(251,191,36,0.3);
+  --color-red:#F87171;
+  --color-red-bg:rgba(248,113,113,0.08);
+  --color-red-border:rgba(248,113,113,0.25);
+  --font-family:'Jost',sans-serif;
+  --ease-smooth:cubic-bezier(0.4,0,0.2,1);
+  --ease-bounce:cubic-bezier(0.48,0.16,0.2,1.21);
+  --radius-sm:4px;
+  --radius-md:8px;
+  --radius-lg:16px;
+  --radius-full:9999px;
+  --max-width:900px;
+  --sidebar-width:280px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-font-smoothing:antialiased}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-family);font-weight:400;font-size:1rem;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--color-accent);color:var(--color-text-on-accent)}
+img{max-width:100%;height:auto;display:block}
+
+/* === COVER === */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 1.5rem;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:140%;height:80%;background:radial-gradient(ellipse at 50% 100%,rgba(233,244,105,0.06) 0%,transparent 60%);pointer-events:none}
+.cover::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--color-accent),transparent)}
+.cover-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.25rem;font-size:.8rem;font-weight:500;color:var(--color-accent);border:1px solid var(--color-accent-border);border-radius:var(--radius-full);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s var(--ease-smooth) .2s forwards}
+.cover-badge-dot{width:6px;height:6px;background:var(--color-accent);border-radius:50%;box-shadow:0 0 10px var(--color-accent)}
+.cover-title{font-size:clamp(2.6rem,6.5vw,5rem);font-weight:500;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s var(--ease-smooth) .4s forwards;max-width:950px}
+.cover-title em{color:var(--color-accent);font-style:italic;font-weight:500}
+.cover-subtitle{font-size:clamp(1.05rem,2vw,1.35rem);font-weight:300;color:var(--color-text-muted);margin-bottom:3rem;opacity:0;animation:fadeUp .8s var(--ease-smooth) .55s forwards;max-width:720px}
+.cover-meta{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s var(--ease-smooth) .7s forwards}
+.cover-meta-item{text-align:center}
+.cover-meta-label{font-size:.7rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.35rem}
+.cover-meta-value{font-size:.9rem;color:var(--color-text-muted)}
+.cover-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--color-text-muted);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:0;animation:fadeUp .8s var(--ease-smooth) 1s forwards}
+.cover-scroll svg{width:18px;height:18px;animation:bounce 1.8s infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* === LAYOUT === */
+.layout{display:grid;grid-template-columns:var(--sidebar-width) 1fr;max-width:1400px;margin:0 auto;gap:3rem;padding:0 2rem}
+.sidebar{position:sticky;top:0;height:100vh;padding:3rem 0;overflow-y:auto}
+.sidebar-title{font-size:.7rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1.5rem}
+.sidebar-nav{display:flex;flex-direction:column;gap:.2rem}
+.sidebar-link{display:block;padding:.6rem .9rem;font-size:.85rem;color:var(--color-text-muted);text-decoration:none;border-left:2px solid transparent;transition:all .2s var(--ease-smooth);line-height:1.4}
+.sidebar-link:hover{color:var(--color-text);border-left-color:var(--color-border)}
+.sidebar-link.active{color:var(--color-accent);border-left-color:var(--color-accent);background:var(--color-accent-dim)}
+.sidebar-link-num{font-family:'Courier New',monospace;font-size:.75rem;color:var(--color-accent);margin-right:.5rem;opacity:.7}
+.content{padding:4rem 0 6rem;max-width:var(--max-width)}
+
+/* === GUIDE === */
+.guide{margin-bottom:3rem;padding:1.25rem 1.5rem;border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-bg-elevated)}
+.guide-title{font-size:.7rem;font-weight:500;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1rem}
+.guide-items{display:flex;gap:1.5rem;flex-wrap:wrap}
+.guide-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--color-text-muted)}
+.guide-dot{width:10px;height:10px;border-radius:2px}
+.guide-dot.green{background:var(--color-green)}
+.guide-dot.grey{background:var(--color-grey)}
+.guide-dot.yellow{background:var(--color-yellow)}
+.guide-dot.red{background:var(--color-red)}
+
+/* === INFO GRID === */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;margin-bottom:4rem;background:var(--color-border);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+.info-cell{padding:1.2rem 1.4rem;background:var(--color-bg-card)}
+.info-label{font-size:.7rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.4rem}
+.info-value{font-size:.95rem;color:var(--color-text);line-height:1.4}
+
+/* === SECTIONS === */
+.section{margin-bottom:5rem;opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease-smooth),transform .8s var(--ease-smooth)}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-number{display:inline-flex;align-items:center;gap:.75rem;font-size:.75rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1rem}
+.section-number::after{content:'';width:40px;height:1px;background:var(--color-accent);opacity:.5}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem}
+.section-title em{color:var(--color-accent);font-style:italic;font-weight:500}
+.section-intro{font-size:1.05rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:2rem;max-width:720px}
+.section-subtitle{font-size:1.2rem;font-weight:500;color:var(--color-text);margin:2rem 0 1rem;letter-spacing:-.015em}
+p{margin-bottom:1rem;color:var(--color-text-muted)}
+p strong{color:var(--color-text);font-weight:500}
+
+/* === BLOCKS === */
+.block{padding:1.4rem 1.6rem;margin:1.25rem 0;border-radius:var(--radius-md);border-left:3px solid;background:var(--color-bg-card);position:relative}
+.block-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+.block-label::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.block.green{border-left-color:var(--color-green);background:var(--color-green-bg)}
+.block.green .block-label{color:var(--color-green)}
+.block.grey{border-left-color:var(--color-grey);background:var(--color-grey-bg)}
+.block.grey .block-label{color:var(--color-grey)}
+.block.yellow{border-left-color:var(--color-yellow);background:var(--color-yellow-bg)}
+.block.yellow .block-label{color:var(--color-yellow)}
+.block.red{border-left-color:var(--color-red);background:var(--color-red-bg)}
+.block.red .block-label{color:var(--color-red)}
+.block p:last-child{margin-bottom:0}
+.block p{color:var(--color-text)}
+
+/* === COMPARE === */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.compare > .block{margin:0}
+@media (max-width:720px){.compare{grid-template-columns:1fr}}
+
+/* === LISTS === */
+ul.clean{list-style:none;margin:1rem 0}
+ul.clean li{position:relative;padding:.5rem 0 .5rem 1.5rem;color:var(--color-text-muted);line-height:1.6}
+ul.clean li::before{content:'';position:absolute;left:0;top:1.15rem;width:6px;height:6px;border-radius:50%;background:var(--color-accent)}
+ul.clean li strong{color:var(--color-text);font-weight:500}
+
+ol.numbered{list-style:none;counter-reset:num;margin:1.5rem 0}
+ol.numbered li{position:relative;padding:.25rem 0 1.25rem 3rem;counter-increment:num;color:var(--color-text-muted);line-height:1.65}
+ol.numbered li::before{content:counter(num);position:absolute;left:0;top:0;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;background:var(--color-accent);color:var(--color-text-on-accent);border-radius:50%;font-size:.85rem;font-weight:500;font-family:'Courier New',monospace}
+ol.numbered li strong{color:var(--color-text);font-weight:500}
+
+/* === QUOTES === */
+.quote{padding:1.25rem 1.5rem;margin:1rem 0;border-left:3px solid var(--color-accent);background:var(--color-bg-elevated);border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:italic;color:var(--color-text);position:relative}
+.quote::before{content:'\201C';position:absolute;top:.5rem;left:1rem;font-size:2.5rem;color:var(--color-accent);opacity:.25;font-family:Georgia,serif;line-height:1}
+.quote-body{padding-left:2rem}
+.quote cite{display:block;margin-top:.6rem;font-size:.8rem;color:var(--color-text-muted);font-style:normal}
+
+/* === TABLE === */
+.table-wrap{margin:1.5rem 0;border:1px solid var(--color-border);border-radius:var(--radius-md);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--color-bg-elevated);padding:.9rem 1.25rem;text-align:left;font-size:.7rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;border-bottom:1px solid var(--color-border)}
+td{padding:1rem 1.25rem;color:var(--color-text-muted);border-bottom:1px solid var(--color-border);line-height:1.55;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-bg-elevated);color:var(--color-text)}
+td strong{color:var(--color-text);font-weight:500}
+
+/* === DYNAMICS BARS === */
+.bars{margin:1.5rem 0;display:flex;flex-direction:column;gap:.9rem}
+.bar-row{display:grid;grid-template-columns:90px 1fr 80px;align-items:center;gap:1rem}
+.bar-label{font-size:.85rem;color:var(--color-text);font-weight:500}
+.bar-track{height:8px;background:var(--color-bg-card);border-radius:var(--radius-full);overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--color-accent),var(--color-accent-hover));border-radius:var(--radius-full);transition:width 1s var(--ease-smooth)}
+.bar-score{font-size:.8rem;color:var(--color-text-muted);font-family:'Courier New',monospace;text-align:right}
+.bar-score strong{color:var(--color-accent)}
+
+/* === CALLOUT === */
+.callout{margin:2.5rem 0;padding:2rem 2.25rem;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--color-accent-dim),transparent);border:1px solid var(--color-accent-border);text-align:center}
+.callout-eyebrow{font-size:.7rem;font-weight:500;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.9rem}
+.callout-body{font-size:1.2rem;font-weight:400;color:var(--color-text);line-height:1.5;letter-spacing:-.01em}
+.callout-body em{color:var(--color-accent);font-style:italic;font-weight:500}
+
+/* === FOOTER === */
+.footer{margin-top:6rem;padding:3rem 2rem;border-top:1px solid var(--color-border);text-align:center}
+.footer-logo{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--color-text-muted);margin-bottom:1rem}
+.footer-logo strong{color:var(--color-accent);font-weight:500}
+.footer-note{font-size:.75rem;color:var(--color-text-muted);max-width:500px;margin:0 auto;line-height:1.6}
+
+/* === RESPONSIVE === */
+@media (max-width:1024px){
+  .layout{grid-template-columns:1fr;padding:0 1.5rem}
+  .sidebar{position:relative;height:auto;padding:2rem 0;border-bottom:1px solid var(--color-border);margin-bottom:2rem}
+  .content{padding:2rem 0 4rem}
+}
+
+/* === PRINT === */
+@media print{
+  body{background:#fff;color:#000}
+  .sidebar,.cover-scroll,.cover::before,.cover::after{display:none}
+  .layout{grid-template-columns:1fr;padding:0}
+  .section{opacity:1;transform:none;page-break-inside:avoid}
+  .block,.callout,.info-cell,.guide{background:#f8f8f8;color:#000}
+  .section-title,.cover-title,p strong,.section-subtitle{color:#000}
+  .cover-title em,.section-title em,.callout-body em{color:#0a7a2b}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-badge"><span class="cover-badge-dot"></span>Strategy Addendum · v2 → v3</div>
+  <h1 class="cover-title">Positioning <em>flip</em>.<br>Andy is the product.</h1>
+  <p class="cover-subtitle">The 20 April deltas to the Credo FS brand strategy. Everything not listed here continues to follow strategy v2.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Client</div><div class="cover-meta-value">Credo FS</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">20 April 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Trigger</div><div class="cover-meta-value">Andy call + transcript</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Status</div><div class="cover-meta-value">Approved deltas</div></div>
+  </div>
+  <div class="cover-scroll">Scroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></div>
+</section>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Contents</div>
+    <nav class="sidebar-nav">
+      <a href="#s1" class="sidebar-link"><span class="sidebar-link-num">01</span>Positioning flip</a>
+      <a href="#s2" class="sidebar-link"><span class="sidebar-link-num">02</span>Core promise</a>
+      <a href="#s3" class="sidebar-link"><span class="sidebar-link-num">03</span>Competitor contrast</a>
+      <a href="#s4" class="sidebar-link"><span class="sidebar-link-num">04</span>Brand scope</a>
+      <a href="#s5" class="sidebar-link"><span class="sidebar-link-num">05</span>Products direction</a>
+      <a href="#s6" class="sidebar-link"><span class="sidebar-link-num">06</span>Audience frame</a>
+      <a href="#s7" class="sidebar-link"><span class="sidebar-link-num">07</span>Podcast</a>
+      <a href="#s8" class="sidebar-link"><span class="sidebar-link-num">08</span>Dynamics re-check</a>
+      <a href="#s9" class="sidebar-link"><span class="sidebar-link-num">09</span>Outstanding from Andy</a>
+      <a href="#s10" class="sidebar-link"><span class="sidebar-link-num">10</span>Application checklist</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <!-- GUIDE -->
+    <div class="guide">
+      <div class="guide-title">How to read this document</div>
+      <div class="guide-items">
+        <div class="guide-item"><span class="guide-dot green"></span>New direction / recommendation</div>
+        <div class="guide-item"><span class="guide-dot grey"></span>Supporting evidence or prior state</div>
+        <div class="guide-item"><span class="guide-dot yellow"></span>Awaiting Andy's input</div>
+        <div class="guide-item"><span class="guide-dot red"></span>Frames to kill</div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-grid">
+      <div class="info-cell"><div class="info-label">Supersedes</div><div class="info-value">§Positioning, §Core Promise, §Competitor Contrast, §Products, §Audience</div></div>
+      <div class="info-cell"><div class="info-label">Unchanged from v2</div><div class="info-value">PASTOR framework, pricing model, CTAs, sitemap</div></div>
+      <div class="info-cell"><div class="info-label">Source</div><div class="info-value">meeting-notes/2026-04-20-andy-call.md</div></div>
+      <div class="info-cell"><div class="info-label">Read alongside</div><div class="info-value">strategy-v2.md</div></div>
+    </div>
+
+    <!-- 1 -->
+    <section class="section" id="s1">
+      <div class="section-number">Section 01</div>
+      <h2 class="section-title">Positioning flip — <em>Andy is the product</em></h2>
+      <p class="section-intro">The offer is no longer systems or outcomes. The offer is the person placing them.</p>
+
+      <div class="compare">
+        <div class="block red">
+          <div class="block-label">Old frame (v2)</div>
+          <p>Credo FS is an outcome-led independent advisor for hospitality. Systems and results take the lead.</p>
+        </div>
+        <div class="block green">
+          <div class="block-label">New frame (v3)</div>
+          <p>Andy is the product. The offer is <strong>peace of mind built on trust, integrity, and hospitality expertise</strong>. Systems are the mechanism, not the story.</p>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Evidence from the 20 April call</h3>
+      <div class="quote"><div class="quote-body">Trust me, I&rsquo;m a doctor.<cite>— Andy, on how clients should feel</cite></div></div>
+      <div class="quote"><div class="quote-body">We&rsquo;re worse than double glazing salesmen.<cite>— Andy, on industry reputation</cite></div></div>
+      <div class="quote"><div class="quote-body">All you need to do is call me.<cite>— Andy, on the proof of trust</cite></div></div>
+
+      <h3 class="section-subtitle">What this means for copy</h3>
+      <ul class="clean">
+        <li><strong>First-person voice throughout.</strong> Andy speaks directly, not &ldquo;we.&rdquo;</li>
+        <li><strong>Lead with the relationship,</strong> then the mechanism.</li>
+        <li><strong>Kill any framing</strong> that implies Credo FS is a card-machine reseller, an EPOS dealer, or a payment broker. Credo FS is Andy; Andy places the right systems.</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="section" id="s2">
+      <div class="section-number">Section 02</div>
+      <h2 class="section-title">Core promise — <em>peace of mind, two halves</em></h2>
+
+      <ol class="numbered">
+        <li><strong>A system that works.</strong> Integrated, fit-for-purpose, installed properly. Won&rsquo;t die mid-service.</li>
+        <li><strong>One person to call when it doesn&rsquo;t.</strong> Andy picks up. No ticket queue. No &ldquo;that&rsquo;s the other company&rsquo;s problem.&rdquo;</li>
+      </ol>
+
+      <div class="callout">
+        <div class="callout-eyebrow">Non-negotiable</div>
+        <div class="callout-body">Both halves must appear on the Home page. <em>Absence of either weakens the promise.</em></div>
+      </div>
+
+      <h3 class="section-subtitle">Headline differentiator — single-point accountability</h3>
+      <div class="compare">
+        <div class="block red">
+          <div class="block-label">Industry norm</div>
+          <p>&ldquo;Ping-pong&rdquo; between card-machine provider and EPOS provider. One blames the other. Owner loses the Friday night.</p>
+        </div>
+        <div class="block green">
+          <div class="block-label">Andy norm</div>
+          <p>One number, one person, one call.</p>
+        </div>
+      </div>
+      <div class="block grey">
+        <div class="block-label">Where this lives</div>
+        <p>Use this contrast explicitly on Home and Consultancy.</p>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="section" id="s3">
+      <div class="section-number">Section 03</div>
+      <h2 class="section-title">Competitor contrast — <em>industry skills gap</em></h2>
+
+      <div class="block grey">
+        <div class="block-label">The gap</div>
+        <p>The average card-machine or EPOS sales rep understands very little about the other side of the stack. Systems have become complex &mdash; integrations, reporting, inventory, reservations, funding. Most reps were trained to sell one box.</p>
+      </div>
+      <div class="block green">
+        <div class="block-label">Andy&rsquo;s edge</div>
+        <p>Twenty years running the sites, then five-plus years across EPOS, card, connectivity, funding, and reservations. Depth the sales-rep average cannot match.</p>
+      </div>
+
+      <h3 class="section-subtitle">Copy application</h3>
+      <ul class="clean">
+        <li><strong>Consultancy page:</strong> &ldquo;Most people selling you a card machine don&rsquo;t understand your till. That&rsquo;s where the problems come from.&rdquo;</li>
+        <li><strong>About page:</strong> Andy&rsquo;s operator-side background is the reason for the depth.</li>
+        <li><strong>Avoid naming competitors.</strong> The contrast is structural, not personal.</li>
+      </ul>
+    </section>
+
+    <!-- 4 -->
+    <section class="section" id="s4">
+      <div class="section-number">Section 04</div>
+      <h2 class="section-title">Brand scope — <em>Credo Financial Services</em></h2>
+
+      <div class="compare">
+        <div class="block red">
+          <div class="block-label">Old treatment</div>
+          <p>&ldquo;Credo UK&rdquo; in places; naming inconsistent; implied card/EPOS only.</p>
+        </div>
+        <div class="block green">
+          <div class="block-label">New treatment</div>
+          <p><strong>Credo Financial Services</strong> is the parent identity.</p>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Scope — explicit</h3>
+      <ul class="clean">
+        <li><strong>EPOS + card</strong> — core</li>
+        <li><strong>Business funding</strong> — Liberus, U-Lend; partner-driven, Andy-placed</li>
+        <li><strong>Reservations</strong> — Call Seats, plus integrations to the EPOS</li>
+        <li><strong>Connectivity</strong> — Starlink for hospitality, emerging</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-body">All of these sit under Andy&rsquo;s <em>single-point accountability</em>. The name &ldquo;Credo FS&rdquo; works across print, podcast, and onboarding.</div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="section" id="s5">
+      <div class="section-number">Section 05</div>
+      <h2 class="section-title">Products direction — <em>Square flagship</em></h2>
+
+      <div class="compare">
+        <div class="block grey">
+          <div class="block-label">Old treatment (v2)</div>
+          <p>Vendor-neutral products grid. &ldquo;Brands I trust.&rdquo;</p>
+        </div>
+        <div class="block green">
+          <div class="block-label">New treatment (v3)</div>
+          <p>Square integrated system is the <strong>flagship recommendation</strong>.</p>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Why Square</h3>
+      <ul class="clean">
+        <li><strong>Integrated till + card processing</strong> — one provider, one support line. Reinforces accountability.</li>
+        <li><strong>Customer display screen,</strong> not just a terminal. Removes the competitor rep&rsquo;s entry point (&ldquo;let me show you a better card reader&rdquo;).</li>
+        <li><strong>Often no rental fee.</strong></li>
+        <li><strong>Andy is actively moving clients onto it.</strong></li>
+      </ul>
+
+      <div class="block grey">
+        <div class="block-label">Supporting grid</div>
+        <p>The grid remains &mdash; Square is the lead story. Other brands (Teya, Sunmi, Shift4, Loyverse, Kuulseats, Elavon, plus funding partners) support specific fit cases.</p>
+      </div>
+
+      <div class="quote"><div class="quote-body">If your current setup already does this, I&rsquo;ll tell you. I don&rsquo;t push Square when a client doesn&rsquo;t need to move.<cite>— Honesty carve-out (copy line)</cite></div></div>
+    </section>
+
+    <!-- 6 -->
+    <section class="section" id="s6">
+      <div class="section-number">Section 06</div>
+      <h2 class="section-title">Audience frame — <em>multi-site reassurance</em></h2>
+
+      <div class="compare">
+        <div class="block grey">
+          <div class="block-label">Old frame</div>
+          <p>Single-site hospitality independents (Phase 2 interview confirmed this as primary target).</p>
+        </div>
+        <div class="block green">
+          <div class="block-label">New frame</div>
+          <p>Primary audience remains single-site independents. <strong>But</strong> copy must explicitly reassure multi-site operators (3&ndash;30 venues) so Andy is credible to that segment without alienating the independents.</p>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Mechanics</h3>
+      <ul class="clean">
+        <li>Add a <strong>multi-site reassurance block</strong> to the Home page (e.g. feature cards or stats) without making it the lead.</li>
+        <li>Consultancy page mentions multi-site where it fits.</li>
+        <li>Near-term outreach target: <strong>Kevin Georgel, St Austell</strong> (named in Andy&rsquo;s LinkedIn network).</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-eyebrow">Language to use</div>
+        <div class="callout-body"><em>&ldquo;From one venue to thirty.&rdquo;</em><br>Not &ldquo;enterprise.&rdquo; Not &ldquo;group.&rdquo;</div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="section" id="s7">
+      <div class="section-number">Section 07</div>
+      <h2 class="section-title">Podcast integration</h2>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Cadence</th><td>Weekly</td></tr>
+          <tr><th>Placement</th><td>Carousel on Home page (and/or About). CMS-editable.</td></tr>
+          <tr><th>Value</th><td>Regular content for SEO, trust building, and source of in-situ Andy imagery.</td></tr>
+          <tr><th>Status</th><td>Podcast format + embed method = <strong>Aaron&rsquo;s task</strong>. Content = Andy.</td></tr>
+          <tr><th>Copy slot</th><td>Home page should have a named section with a placeholder block until first three episodes exist. <strong>Do not publish empty.</strong></td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="section" id="s8">
+      <div class="section-number">Section 08</div>
+      <h2 class="section-title">Dynamics re-check</h2>
+      <p class="section-intro">v2 dynamics: C7 T9 U4 S3 I5 (Trust dominant). Positioning flip shifts three of the five.</p>
+
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label">Trust</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+          <div class="bar-score">9 → <strong>10</strong></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Clarity</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+          <div class="bar-score">7 → <strong>7</strong></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Useful</div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+          <div class="bar-score">4 → <strong>5</strong></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Social</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%"></div></div>
+          <div class="bar-score">3 → <strong>4</strong></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Inspire</div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+          <div class="bar-score">5 → <strong>5</strong></div>
+        </div>
+      </div>
+
+      <div class="block green">
+        <div class="block-label">Why</div>
+        <p><strong>Trust 9 → 10</strong> — Trust is now the entire product, not just a dominant quality. <strong>Useful 4 → 5</strong> — single-point accountability is explicit utility. <strong>Social 3 → 4</strong> — podcast + Andy&rsquo;s personal presence increase social texture.</p>
+      </div>
+      <div class="block grey">
+        <div class="block-label">Framework</div>
+        <p>PASTOR holds. Storytelling secondary on About (unchanged).</p>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="section" id="s9">
+      <div class="section-number">Section 09</div>
+      <h2 class="section-title">Outstanding inputs from Andy</h2>
+      <p class="section-intro">Three blockers. Each has a placeholder pattern in copy until resolved.</p>
+
+      <div class="block yellow">
+        <div class="block-label">Awaiting — positioning statement</div>
+        <p><strong>2-paragraph positioning statement in Andy&rsquo;s own words.</strong> Feeds Home hero subtext + About lede. Until received, copy uses interim language flagged <code>[ANDY: await positioning statement]</code>.</p>
+      </div>
+      <div class="block yellow">
+        <div class="block-label">Awaiting — imagery</div>
+        <p>Profile shot, client-scenario shots, Square system visuals. Current placeholders (<code>narrative-person</code>, <code>step-devices</code>) remain.</p>
+      </div>
+      <div class="block yellow">
+        <div class="block-label">Awaiting — podcast content</div>
+        <p>Draft / first three episodes. Until received, carousel slot shows <code>[ANDY: podcast launch pending]</code>.</p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="section" id="s10">
+      <div class="section-number">Section 10</div>
+      <h2 class="section-title">Application checklist <em>(v2 → v3 in copy)</em></h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Page</th><th>Change</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Home</strong></td><td>Hero retained (already &ldquo;Saturday night&rdquo;). Narrative rewritten around Andy, not systems. Add peace-of-mind two-halves block. Add multi-site reassurance. Add podcast carousel placeholder.</td></tr>
+            <tr><td><strong>About</strong></td><td>Centre trust / integrity / hospitality expertise. Rugby ref narrative retained. Add podcast mention.</td></tr>
+            <tr><td><strong>Consultancy</strong></td><td>Lead with single-point accountability + skills-gap contrast. Process intact.</td></tr>
+            <tr><td><strong>Products</strong></td><td>Square integrated system flagship. Credo FS scope broadened (funding + reservations). Starlink retained.</td></tr>
+            <tr><td><strong>Reviews</strong></td><td>Supporting copy reframed around trust / accountability. Testimonials unchanged.</td></tr>
+            <tr><td><strong>Contact</strong></td><td>Tone sharpened: one person, no ticket queue.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-body">Strategy v2 remains the source of truth for everything not listed above. <em>This addendum governs the 20 April deltas</em> and should be read alongside strategy-v2.md.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo"><strong>Originate</strong> · Strategy Addendum</div>
+  <p class="footer-note">Confidential. For Credo FS / Andy Miller only. This document captures the 20 April 2026 positioning deltas to strategy v2 and should not be shared externally.</p>
+</footer>
+
+<script>
+// Active TOC tracking
+const links = document.querySelectorAll('.sidebar-link');
+const sections = document.querySelectorAll('.section');
+const byId = {};
+links.forEach(l => { byId[l.getAttribute('href').slice(1)] = l; });
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      const link = byId[e.target.id];
+      if (link) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
