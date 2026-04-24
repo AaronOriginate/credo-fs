@@ -7,10 +7,13 @@ import { href } from '../../lib/nav';
   <!-- Geometric arrow graphic — top left, overlaps nav like consultancy page -->
   <div class="absolute -top-16 left-0 w-[320px] lg:w-[420px] h-auto z-0 pointer-events-none">
     <img
-      src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/04/credo4.png"
+      src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
       alt=""
+      width="626"
+      height="744"
       class="w-full h-auto"
       aria-hidden="true"
+      fetchpriority="high"
     />
   </div>
 
