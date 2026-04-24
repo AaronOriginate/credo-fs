@@ -4,8 +4,8 @@ import { href } from '../../lib/nav';
 ---
 
 <section class="bg-white w-full relative overflow-hidden">
-  <!-- Geometric arrow graphic — top left, overlaps nav like consultancy page -->
-  <div class="absolute -top-16 left-0 w-[320px] lg:w-[420px] h-auto z-0 pointer-events-none">
+  <!-- Geometric arrow graphic — top-left, breaks into nav (matches WP) -->
+  <div class="absolute -top-8 sm:-top-10 -left-6 sm:-left-8 w-[120px] sm:w-[140px] lg:w-[180px] h-auto z-0 pointer-events-none">
     <img
       src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
       alt=""
@@ -25,7 +25,7 @@ import { href } from '../../lib/nav';
 
     <!-- Subtext -->
     <p class="text-lg leading-relaxed text-dark text-center max-w-[600px] mx-auto mt-4">
-      You deserve someone who actually answers. And a deal you can understand.
+      You deserve someone who actually answers, and a deal you can understand.
     </p>
 
     <!-- Buttons -->

@@ -11,14 +11,15 @@ import S10Footer from "../components/sections/S10Footer.astro";
 import { href } from '../lib/nav';
 ---
 
-<Layout title="About Andy — Credo FS">
+<Layout title="About Andy, Credo Financial Services">
   <S01Navigation />
   <PageHero
+    bgImage="about"
     eyebrow="About Andy"
-    heading="There's a moment I keep coming back to."
+    heading="When it matters, people want a person, not a system."
     body={[
       "I'm twenty-three, navigating a container ship through a typhoon off the coast of Japan, and the only thing between us and the rocks is a compass, a chart, and whether I'd done my job properly.",
-      "The Merchant Navy teaches you something that sticks. When it matters, people don't want a system. They want a person who knows what they're doing and picks up the phone.",
+      "The Merchant Navy teaches you something that sticks, and twenty years running pubs and hotels drilled it in further. When the wheels come off, people don't want a help desk, they want someone who's been in the same boat and knows what to do.",
     ]}
   />
   <AboutHospitality />
@@ -30,10 +31,10 @@ import { href } from '../lib/nav';
       <div class="w-12 h-0.5 bg-accent mb-12"></div>
       <div class="max-w-3xl">
         <p class="text-gray-text leading-relaxed mb-6">
-          Sallyann Reed has been a client for five years now. When there's a better deal out there for her business, I let her know. When something goes wrong, she calls me. Not a helpline. Not a chatbot queue. Me.
+          Sallyann Reed has been a client for five years now. When there's a better deal out there for her business, I let her know, and when something goes wrong, she calls me rather than a helpline or a chatbot queue.
         </p>
         <p class="text-gray-text leading-relaxed">
-          That's how it should work. And for most of my clients, it does. About 70% of the people I work with came through a recommendation from someone I'd already helped. I don't run ads. I don't cold-call. I just do the work properly and let people talk.
+          That's how it should work, and for most of my clients it does. About 70% of the people I work with came through a recommendation from someone I'd already helped. I don't run ads or cold-call anyone. I just do the work properly and let people talk.
         </p>
       </div>
     </div>
@@ -43,7 +44,7 @@ import { href } from '../lib/nav';
     heading="Five years and counting"
     quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change. Peace of mind knowing that if there's an issue I can call him and it will be rectified very quickly."
     name="Sallyann Reed"
-    source="Five years as a customer — TrustPilot"
+    source="Five years as a customer, TrustPilot"
   />
   <!-- Link to reviews -->
   <div class="bg-white pb-12 -mt-8">
@@ -55,9 +56,9 @@ import { href } from '../lib/nav';
   </div>
   <AboutPersonal />
   <ContactCta
-    heading="If you're not sure whether you're getting a fair deal, let's find out."
-    subtext="A conversation costs nothing. I'll go through your setup, tell you straight, and if there's nothing to change, I'll say so."
-    hint="Completely free. Just a straight conversation."
+    heading="One call, and I sort it."
+    subtext="Whether you're running one pub or thirty, you get the same mobile number. I'll go through your setup and tell you what I'd leave alone, what I'd change, and why, and I'm the one you ring when something goes wrong on a Friday."
+    hint="No charge, no contract, just a chat."
   />
   <S10Footer />
 </Layout>
