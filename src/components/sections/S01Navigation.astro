@@ -16,7 +16,7 @@ const isCurrent = (target: string) => {
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href={href('/')} class="shrink-0">
-        <img src={`${import.meta.env.BASE_URL}/images/credo/logo.png`} alt="Credo FS" width="298" height="104" class="h-9 w-auto" />
+        <img src={`${import.meta.env.BASE_URL}/images/credo/logo.png`} alt="Credo FS" width="298" height="104" class="h-9 w-auto" fetchpriority="high" />
       </a>
 
       <!-- Desktop nav -->
