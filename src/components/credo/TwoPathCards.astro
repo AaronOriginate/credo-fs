@@ -5,7 +5,7 @@ import Btn from './Btn.astro';
 ---
 
 <section class="w-full">
-  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+  <div class="max-w-[1232px] mx-auto px-6 sm:px-8 pt-28 pb-12 sm:pt-32 sm:pb-20 lg:pt-32 lg:pb-28">
     <!-- Section label -->
     <p class="uppercase text-sm font-medium tracking-[2px] text-dark">Two ways in</p>
     <div class="w-12 h-0.5 bg-accent mt-4"></div>
@@ -13,7 +13,7 @@ import Btn from './Btn.astro';
     <!-- Top area: heading + body text -->
     <div class="flex flex-col lg:flex-row gap-8 mt-12 items-end">
       <div class="flex-1">
-        <h2 data-reveal class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Talk it through, or have a look at the kit?</h2>
+        <h2 data-reveal class="font-heading font-medium leading-tight tracking-tight text-dark" style="font-size: clamp(1.875rem, 5vw, 3.5rem);">Talk it through, or have a look at the kit?</h2>
       </div>
       <div class="lg:w-[440px] shrink-0">
         <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark">Some people want a chat first. Others want to see what's out there. Either way, you end up talking to me.</p>
@@ -23,8 +23,8 @@ import Btn from './Btn.astro';
     <!-- Bottom area: two cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" data-reveal-group="cards">
       <!-- Card 1: Talk it through -->
-      <div data-reveal class="bg-navy rounded-lg p-12 flex flex-col justify-center aspect-square">
-        <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-white">Want an honest opinion?</h3>
+      <div data-reveal class="bg-navy rounded-lg p-8 sm:p-12 flex flex-col justify-center md:aspect-square">
+        <h3 class="font-heading font-medium leading-tight tracking-tight text-white" style="font-size: clamp(1.75rem, 5vw, 3.5rem);">Want an honest opinion?</h3>
         <p class="mt-6 text-lg leading-relaxed text-white/80">I'll go through your setup with you, the till, the card machine, the broadband, the booking system, the lot, and tell you what I'd change and what I'd leave alone. It costs nothing and there's no contract.</p>
         <div class="mt-8">
           <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
@@ -32,8 +32,8 @@ import Btn from './Btn.astro';
       </div>
 
       <!-- Card 2: See the systems -->
-      <div data-reveal class="bg-light-gray rounded-lg p-12 flex flex-col justify-center aspect-square">
-        <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Know what you're after?</h3>
+      <div data-reveal class="bg-light-gray rounded-lg p-8 sm:p-12 flex flex-col justify-center md:aspect-square">
+        <h3 class="font-heading font-medium leading-tight tracking-tight text-dark" style="font-size: clamp(1.75rem, 5vw, 3.5rem);">Know what you're after?</h3>
         <p class="mt-6 text-lg leading-relaxed text-dark">Have a look at the systems I put in and the providers I work with. Integrated tills, card processing, bookings, broadband, and funding when it helps.</p>
         <div class="mt-8">
           <Btn href="/systems-and-solutions" variant="secondary">See the systems</Btn>

@@ -3,7 +3,7 @@
 ---
 
 <section class="bg-white w-full">
-  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+  <div class="max-w-[1232px] mx-auto px-6 sm:px-8 pt-28 pb-12 sm:pt-32 sm:pb-20 lg:pt-32 lg:pb-28">
     <!-- Section label -->
     <p class="uppercase text-sm font-medium tracking-[2px] text-dark">
       How it works
@@ -13,9 +13,9 @@
     <div class="w-12 h-0.5 bg-accent mt-4"></div>
 
     <!-- Two-column layout -->
-    <div class="flex flex-row gap-12 mt-12">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 mt-12">
       <!-- Left column (~50%) -->
-      <div class="w-1/2">
+      <div class="w-full lg:w-1/2 order-2 lg:order-1">
         <!-- Large heading -->
         <h2 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.025em] text-dark" style="font-size: clamp(1.875rem, 4vw, 3.5rem);">
           One system. One call. One person.
@@ -91,8 +91,8 @@
       </div>
 
       <!-- Right column (~50%): navy image placeholder -->
-      <div class="w-1/2" data-reveal="fade" style="--reveal-delay: 200ms;">
-        <div class="bg-navy rounded-lg overflow-hidden aspect-[3/4] flex items-center justify-center p-8">
+      <div class="w-full lg:w-1/2 order-1 lg:order-2" data-reveal="fade" style="--reveal-delay: 200ms;">
+        <div class="bg-navy rounded-lg overflow-hidden aspect-[4/3] lg:aspect-[3/4] flex items-center justify-center p-8">
           <img src={`${import.meta.env.BASE_URL}/images/credo/step-devices.webp`} alt="POS and card machine devices" width="705" height="591" loading="lazy" class="max-w-full max-h-full object-contain" />
         </div>
       </div>

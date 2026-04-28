@@ -5,7 +5,7 @@ import Btn from './Btn.astro';
 ---
 
 <section class="bg-white w-full relative overflow-hidden min-h-[100svh] flex items-center">
-  <!-- Chunky credo graphic, clipping off top-left. Hidden on mobile so it doesn't overlap headline. -->
+  <!-- Chunky credo graphic, desktop: clipping off top-left. -->
   <div class="hidden lg:block absolute overflow-hidden z-0 pointer-events-none -top-40 xl:-top-8" style="width: clamp(140px, 18vw, 360px); aspect-ratio: 626 / 744; left: clamp(-3rem, -2vw, 0rem);">
     <img
       src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
@@ -18,21 +18,60 @@ import Btn from './Btn.astro';
     />
   </div>
 
-  <div class="max-w-[1232px] w-full mx-auto px-8 py-20 flex flex-col items-center relative z-10">
+  <!-- Mobile credo graphic: small accent clipping off top-left. -->
+  <div class="lg:hidden absolute overflow-hidden z-0 pointer-events-none -top-10 -left-8" style="width: 130px; aspect-ratio: 626 / 744;">
+    <img
+      src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
+      alt=""
+      width="626"
+      height="744"
+      class="w-full h-auto"
+      aria-hidden="true"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Mobile mirrored credo graphic: small accent clipping off bottom-right. -->
+  <div class="lg:hidden absolute overflow-hidden z-0 pointer-events-none -bottom-10 -right-8" style="width: 130px; aspect-ratio: 626 / 744;">
+    <img
+      src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
+      alt=""
+      width="626"
+      height="744"
+      class="w-full h-auto"
+      style="transform: rotate(180deg);"
+      aria-hidden="true"
+    />
+  </div>
+
+  <!-- Mirrored credo graphic, desktop: clipping off bottom-right (180° rotation of top-left). -->
+  <div class="hidden lg:block absolute overflow-hidden z-0 pointer-events-none -bottom-40 xl:-bottom-8" style="width: clamp(140px, 18vw, 360px); aspect-ratio: 626 / 744; right: clamp(-3rem, -2vw, 0rem);">
+    <img
+      src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
+      alt=""
+      width="626"
+      height="744"
+      class="w-full h-auto"
+      style="transform: rotate(180deg);"
+      aria-hidden="true"
+    />
+  </div>
+
+  <div class="max-w-[1232px] w-full mx-auto px-6 sm:px-8 py-20 flex flex-col items-start lg:items-center relative z-10">
     <!-- Headline (fluid, large) -->
-    <h1 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.02em] text-center text-dark max-w-5xl mx-auto" style="font-size: clamp(2rem, 5.5vw, 5.25rem);">
+    <h1 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.02em] text-left lg:text-center text-dark max-w-5xl lg:mx-auto" style="font-size: clamp(2rem, 5.5vw, 5.25rem);">
       When your till goes down on a Saturday night, you need one person who picks up the phone. Not a helpdesk. Not a different department. Me.
     </h1>
 
     <!-- Subtext -->
-    <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark text-center max-w-[640px] mx-auto mt-6">
+    <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark text-left lg:text-center max-w-[640px] lg:mx-auto mt-6">
       Andy Miller. Pub systems expert. 40 years in hospitality. One number.
     </p>
 
     <!-- Buttons -->
-    <div data-reveal="fade" style="--reveal-delay: 400ms;" class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto items-center">
+    <div data-reveal="fade" style="--reveal-delay: 400ms;" class="flex flex-col sm:flex-row gap-4 mt-8 items-start sm:items-center">
       <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
-      <Btn href="/consultancy" variant="secondary" arrow={false}>See how it works</Btn>
+      <Btn href="/consultancy" variant="secondary">See how it works</Btn>
     </div>
   </div>
 

@@ -23,11 +23,13 @@ interface Props {
   from?: string;
   direction?: 'left' | 'right';
   height?: number;
+  position?: 'top' | 'bottom';
 }
 const {
   from = 'white',
   direction = 'right',
   height = 80,
+  position = 'top',
 } = Astro.props;
 
 const colorMap: Record<string, string> = {
@@ -41,19 +43,28 @@ const colorMap: Record<string, string> = {
 const resolveColor = (c: string) => colorMap[c] ?? c;
 const fromColor = resolveColor(from);
 
-// Slight randomization +/- 4 units so each tilt feels hand-drawn
+// Slight randomization +/- 4 units so each tilt feels hand-drawn (controls slope only)
 const jitter = Math.floor(Math.random() * 9) - 4;
 
-// Triangle in the "from" color sits at the top of the next section.
-// direction=right → triangle high on left, low on right (slope falls right)
-// direction=left  → triangle low on left, high on right (slope falls left)
-const polygonPoints = direction === 'right'
-  ? `0,0 100,0 0,${height + jitter}`
-  : `0,0 100,0 100,${height + jitter}`;
+// Triangle in the "from" color sits at the top OR bottom of the section.
+// position=top: from-color triangle eats into top of next section
+// position=bottom: next-color triangle eats into bottom of current section
+// Polygons always reach 0 and `height` exactly so there's no sub-pixel seam.
+const slope = height + jitter;
+const H = height;
+const polygonPoints = position === 'top'
+  ? (direction === 'right'
+      ? `0,0 100,0 0,${slope}`
+      : `0,0 100,0 100,${slope}`)
+  : (direction === 'right'
+      ? `0,${slope} 100,0 100,${H} 0,${H}`
+      : `0,0 100,${slope} 100,${H} 0,${H}`);
+
+const positionClass = position === 'top' ? 'top-0' : 'bottom-0';
 ---
 
 <div
-  class="absolute top-0 left-0 right-0 w-full overflow-hidden leading-[0] pointer-events-none z-20"
+  class={`absolute ${positionClass} left-0 right-0 w-full overflow-hidden leading-[0] pointer-events-none z-20`}
   style={`height: ${height}px;`}
   aria-hidden="true"
 >
