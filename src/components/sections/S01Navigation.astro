@@ -1,8 +1,17 @@
 ---
 import { href } from '../../lib/nav';
+import Btn from '../credo/Btn.astro';
+
+const path = Astro.url?.pathname || '';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+const stripped = path.startsWith(base) ? path.slice(base.length) || '/' : path;
+const isCurrent = (target: string) => {
+  if (target === '/') return stripped === '/' || stripped === '';
+  return stripped === target || stripped.startsWith(target + '/');
+};
 ---
 <!-- Section 01 — Navigation | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:2 -->
-<nav data-figma-ref="8:2" class="sticky top-0 z-50 bg-white border-b border-gray-200">
+<nav id="site-nav" data-figma-ref="8:2" class="sticky top-0 z-50 bg-white border-b border-gray-200 transition-transform duration-300 will-change-transform">
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
@@ -12,17 +21,12 @@ import { href } from '../../lib/nav';
 
       <!-- Desktop nav -->
       <div class="hidden lg:flex items-center gap-8">
-        <a href={href('/')} class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
-        <a href={href('/about')} class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
-        <a href={href('/consultancy')} class="text-sm font-medium text-dark">Consultancy</a>
-        <a href={href('/products')} class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
-        <a href={href('/reviews')} class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
-        <a
-          href={href('/contact')}
-          class="bg-accent text-dark text-sm font-semibold px-5 py-2.5 rounded-full hover:brightness-95 transition-all"
-        >
-          Let's have a chat
-        </a>
+        <a href={href('/')} class="nav-link text-sm text-dark" aria-current={isCurrent('/') ? 'page' : undefined}>Home</a>
+        <a href={href('/about')} class="nav-link text-sm text-dark" aria-current={isCurrent('/about') ? 'page' : undefined}>About Andy</a>
+        <a href={href('/consultancy')} class="nav-link text-sm text-dark" aria-current={isCurrent('/consultancy') ? 'page' : undefined}>Consultancy</a>
+        <a href={href('/systems-and-solutions')} class="nav-link text-sm text-dark" aria-current={isCurrent('/systems-and-solutions') ? 'page' : undefined}>Systems & Solutions</a>
+        <a href={href('/reviews')} class="nav-link text-sm text-dark" aria-current={isCurrent('/reviews') ? 'page' : undefined}>Reviews</a>
+        <Btn href="/contact" variant="primary" size="sm" arrow={true}>Let's have a chat</Btn>
       </div>
 
       <!-- Mobile hamburger -->
@@ -42,17 +46,12 @@ import { href } from '../../lib/nav';
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white">
     <div class="max-w-[1232px] mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4">
-      <a href={href('/')} class="text-sm text-gray-text hover:text-dark transition-colors">Home</a>
-      <a href={href('/about')} class="text-sm text-gray-text hover:text-dark transition-colors">About Andy</a>
-      <a href={href('/consultancy')} class="text-sm font-medium text-dark">Consultancy</a>
-      <a href={href('/products')} class="text-sm text-gray-text hover:text-dark transition-colors">Products</a>
-      <a href={href('/reviews')} class="text-sm text-gray-text hover:text-dark transition-colors">Reviews</a>
-      <a
-        href={href('/contact')}
-        class="bg-accent text-dark text-sm font-semibold px-5 py-2.5 rounded-full text-center hover:brightness-95 transition-all"
-      >
-        Let's have a chat
-      </a>
+      <a href={href('/')} class="nav-link text-sm text-dark inline-block" aria-current={isCurrent('/') ? 'page' : undefined}>Home</a>
+      <a href={href('/about')} class="nav-link text-sm text-dark inline-block" aria-current={isCurrent('/about') ? 'page' : undefined}>About Andy</a>
+      <a href={href('/consultancy')} class="nav-link text-sm text-dark inline-block" aria-current={isCurrent('/consultancy') ? 'page' : undefined}>Consultancy</a>
+      <a href={href('/systems-and-solutions')} class="nav-link text-sm text-dark inline-block" aria-current={isCurrent('/systems-and-solutions') ? 'page' : undefined}>Systems & Solutions</a>
+      <a href={href('/reviews')} class="nav-link text-sm text-dark inline-block" aria-current={isCurrent('/reviews') ? 'page' : undefined}>Reviews</a>
+      <Btn href="/contact" variant="primary" size="sm" arrow={true} class="w-full">Let's have a chat</Btn>
     </div>
   </div>
 </nav>
@@ -80,5 +79,43 @@ import { href } from '../../lib/nav';
         bot.style.transform = "";
       }
     });
+  }
+
+  // Hide on scroll down, show on scroll up
+  const nav = document.getElementById("site-nav");
+  if (nav) {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const threshold = 8;
+    const showAbove = 80;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      const mobileMenuOpen = menu && !menu.classList.contains("hidden");
+
+      if (Math.abs(delta) < threshold) {
+        ticking = false;
+        return;
+      }
+
+      if (y < showAbove || mobileMenuOpen) {
+        nav.style.transform = "";
+      } else if (delta > 0) {
+        nav.style.transform = "translateY(-100%)";
+      } else {
+        nav.style.transform = "";
+      }
+
+      lastY = y;
+      ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
   }
 </script>

@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import S01Navigation from "../components/sections/S01Navigation.astro";
+import PageHero from "../components/credo/PageHero.astro";
+import Narrative from "../components/credo/Narrative.astro";
+import BrandGrid from "../components/credo/BrandGrid.astro";
+import NavyStatement from "../components/credo/NavyStatement.astro";
+import ContactCta from "../components/credo/ContactCta.astro";
+import S10Footer from "../components/sections/S10Footer.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
+---
+
+<Layout title="Systems & Solutions, Credo Financial Services">
+  <S01Navigation />
+  <PageHero
+    bgImage="products"
+    eyebrow="Systems & Solutions"
+    heading="I don't sell systems. I recommend the right one for your business."
+    body={[
+      "There's a question I ask before I recommend anything: does the till talk to the card machine?",
+      "That sounds obvious. It isn't.",
+      "Most pubs and restaurants run two separate systems from two separate companies. Your till does one thing, your card machine does another, and they don't share information. When something goes wrong, you ring one company and they point you to the other. You spend your morning bouncing between two support lines instead of running your business.",
+      "Every system I recommend solves that problem from day one.",
+    ]}
+  />
+  <!-- Narrative (white default) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <Narrative
+      paragraphs={[
+        "One system. One set of reports. One call when something goes wrong. Integrated doesn't just mean the till and card machine are from the same brand. It means they share data in real time, so your end-of-day reconciliation is automatic, your reports are accurate, and there's no gap between what the till says and what the card machine processed.",
+        "Where possible I go further than that. With Square's Register product, for example, the card reader is physically built into the customer-facing display. No separate terminal. No wifi link to drop. No ambiguity about whose problem it is when something goes wrong.",
+        "That's the standard I work to. Every time.",
+      ]}
+    />
+  </div>
+  <!-- BrandGrid (light-gray) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <BrandGrid />
+  </div>
+  <!-- NavyStatement bg=accent (lime) -->
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="right" />
+    <NavyStatement
+      heading="Nine times out of ten, it's your internet."
+      body="Before I look at your till or your card machine, I ask about your wifi. Most of the tech problems I get called about aren't hardware or software failures. They're connectivity. A weak or unstable connection drops card payments, freezes your till mid-service, and sends your kitchen printer offline at 7pm on a Friday. This is why I now offer dedicated Starlink satellite installations for hospitality venues as part of my managed solution. Fast, reliable, and completely separate from your venue's general broadband. It solves the problem most people didn't realise they had, and removes the single biggest cause of EPOS and card machine failures at source."
+      stats={[]}
+      linkText="Arrange a call with Andy"
+      linkHref="#"
+      bg="accent"
+    />
+  </div>
+  <!-- ContactCta (navy) -->
+  <div class="relative">
+    <TiltDivider from="accent" direction="left" />
+    <ContactCta
+      heading="Not sure which system is right for you?"
+      subtext="That's exactly why you should talk to me first. I'll go through your current setup, ask the right questions, and recommend something that actually fits."
+      hint="With no obligation and no sales pitch."
+    />
+  </div>
+  <S10Footer />
+</Layout>

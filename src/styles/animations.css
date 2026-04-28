@@ -1,0 +1,238 @@
+/* Credo FS — scroll-reveal animations
+ * Vanilla CSS + IntersectionObserver. Replicates Elementor/UiCore patterns.
+ * Respects prefers-reduced-motion. transform/opacity only — no layout-triggering properties.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-uicore: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.61, -0.12, 0.08, 1.55);
+    --reveal-duration: 800ms;
+  }
+
+  /* Default reveal: translateY + fade */
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 7vh, 0);
+    transition:
+      opacity var(--reveal-duration) var(--ease-out),
+      transform var(--reveal-duration) var(--ease-uicore);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  /* Variant: fade only, no translate */
+  [data-reveal="fade"] {
+    transform: none;
+  }
+
+  /* Variant: zoom-in */
+  [data-reveal="zoom"] {
+    transform: scale(0.94);
+  }
+
+  /* Triggered state */
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  [data-reveal="zoom"].is-visible {
+    transform: scale(1);
+  }
+
+  /* Stagger via :nth-child within a [data-reveal-group] container */
+  [data-reveal-group] > [data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(2) { --reveal-delay: 100ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(3) { --reveal-delay: 200ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(4) { --reveal-delay: 300ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(5) { --reveal-delay: 400ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(6) { --reveal-delay: 500ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(7) { --reveal-delay: 600ms; }
+  [data-reveal-group] > [data-reveal]:nth-child(8) { --reveal-delay: 700ms; }
+
+  /* Wider stagger for stat rows (150ms) */
+  [data-reveal-group="wide"] > [data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+  [data-reveal-group="wide"] > [data-reveal]:nth-child(2) { --reveal-delay: 150ms; }
+  [data-reveal-group="wide"] > [data-reveal]:nth-child(3) { --reveal-delay: 300ms; }
+  [data-reveal-group="wide"] > [data-reveal]:nth-child(4) { --reveal-delay: 450ms; }
+
+  /* Tighter stagger for partner tiles (60ms — more tiles, faster cadence) */
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(2) { --reveal-delay: 60ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(3) { --reveal-delay: 120ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(4) { --reveal-delay: 180ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(5) { --reveal-delay: 240ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(6) { --reveal-delay: 300ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(7) { --reveal-delay: 360ms; }
+  [data-reveal-group="tight"] > [data-reveal]:nth-child(8) { --reveal-delay: 420ms; }
+
+  /* Card-mode stagger (80ms — 6 feature cards) */
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(2) { --reveal-delay: 80ms; }
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(3) { --reveal-delay: 160ms; }
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(4) { --reveal-delay: 240ms; }
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(5) { --reveal-delay: 320ms; }
+  [data-reveal-group="cards"] > [data-reveal]:nth-child(6) { --reveal-delay: 400ms; }
+
+  /* Smooth scroll for in-page anchor links */
+  :root { scroll-behavior: smooth; }
+
+  /* Button hover (matches WP .uicore-btn) */
+  a.btn, button.btn,
+  [data-btn] {
+    transition: transform 200ms var(--ease-uicore), background-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+  a.btn:hover, button.btn:hover,
+  [data-btn]:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Accordion content (replaces .hidden toggle) */
+  [data-accordion-content] {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms var(--ease-uicore);
+  }
+  [data-accordion-item][data-open="true"] [data-accordion-content] {
+    max-height: var(--content-height, 1000px);
+  }
+  [data-accordion-trigger] svg {
+    transition: transform 300ms var(--ease-uicore);
+  }
+  [data-accordion-item][data-open="true"] [data-accordion-trigger] svg {
+    transform: rotate(180deg);
+  }
+}
+
+  /* ── Btn (arrow + text flip), matches WP credofsdev pattern ──────────── */
+  .btn-flip {
+    position: relative;
+    transition:
+      background-color 300ms var(--ease-uicore),
+      color 300ms var(--ease-uicore),
+      border-color 300ms var(--ease-uicore);
+  }
+
+  .btn-flip .btn-arrow {
+    transition: transform 400ms var(--ease-uicore);
+  }
+  .btn-flip:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Text flip: original slides up + fades, duplicate slides in from below */
+  .btn-flip .btn-text-wrap {
+    line-height: 1;
+  }
+  .btn-flip .btn-text-a,
+  .btn-flip .btn-text-b {
+    transition:
+      transform 600ms cubic-bezier(0.15, 0.85, 0.31, 1),
+      opacity 400ms cubic-bezier(0.15, 0.85, 0.31, 1);
+  }
+  .btn-flip .btn-text-b {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  .btn-flip:hover .btn-text-a {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  .btn-flip:hover .btn-text-b {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Variants */
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-navy);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background-color: var(--color-navy);
+    color: #fff;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-accent);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Tertiary text link — same flip + arrow animation, no background */
+  .btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+  .btn-text .btn-arrow {
+    transition: transform 400ms var(--ease-uicore);
+  }
+  .btn-text:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+  .btn-text .btn-text-wrap {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1.15;
+  }
+  .btn-text .btn-text-a,
+  .btn-text .btn-text-b {
+    display: block;
+    transition:
+      transform 600ms cubic-bezier(0.15, 0.85, 0.31, 1),
+      opacity 400ms cubic-bezier(0.15, 0.85, 0.31, 1);
+  }
+  .btn-text .btn-text-b {
+    position: absolute;
+    inset: 0;
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  .btn-text:hover .btn-text-a {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  .btn-text:hover .btn-text-b {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ── Nav link hover (matches WP uicore timing) ──────────────────────── */
+  .nav-link {
+    position: relative;
+    transition: color 200ms cubic-bezier(0.68, 0.01, 0.58, 0.75);
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; }
+}

@@ -1,49 +1,56 @@
 ---
 /** StatsGrid — Figma node 8:30 */
+const image = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80";
 ---
 
-<section class="bg-navy py-20 sm:py-28 lg:py-32">
-  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-navy pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32 relative overflow-hidden">
+  <div
+    class="absolute inset-0 bg-cover bg-center pointer-events-none"
+    style={`background-image: url('${image}'); mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%);`}
+    aria-hidden="true"
+  ></div>
+  <div class="absolute inset-0 bg-navy/65 pointer-events-none" aria-hidden="true"></div>
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section label -->
-    <p class="text-xs uppercase tracking-widest text-white/60 mb-4">What you actually get</p>
+    <p class="text-xs uppercase tracking-widest text-accent mb-4">Three reasons people work with me</p>
     <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
 
     <!-- 2-col grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
       <!-- Left: heading -->
       <div>
-        <h2 class="font-heading font-medium text-white text-3xl sm:text-4xl lg:text-5xl leading-tight">
-          Kit that works. One number when it doesn't.
+        <h2 data-reveal class="font-heading font-medium text-white text-3xl sm:text-4xl lg:text-5xl leading-tight">
+          Three reasons people work with me.
         </h2>
       </div>
 
       <!-- Right: stat rows -->
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-8" data-reveal-group="wide">
         <!-- Stat 1 -->
-        <div class="border-b border-accent pb-8">
-          <h3 class="font-heading font-medium text-white text-lg mb-2">Set up properly from day one</h3>
+        <div data-reveal class="border-b border-accent pb-8">
+          <h3 class="font-heading font-medium text-white text-lg mb-2">Peace of mind</h3>
           <p class="text-white/70 text-sm mb-4">
-            Till, card machine, bookings and broadband chosen to work together, so nothing clashes and nothing dies halfway through service.
+            One system. One contact. One person who picks up the phone. You run your pub, I'll make sure the technology doesn't get in the way.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">1 setup</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">1 number</p>
         </div>
 
         <!-- Stat 2 -->
-        <div class="border-b border-accent pb-8">
-          <h3 class="font-heading font-medium text-white text-lg mb-2">One number. No call centre.</h3>
+        <div data-reveal class="border-b border-accent pb-8">
+          <h3 class="font-heading font-medium text-white text-lg mb-2">Save time</h3>
           <p class="text-white/70 text-sm mb-4">
-            When something goes down, you ring me. Not a ticket queue, and not someone who'll blame the other provider. Just me, and I'll sort it.
+            Integrated systems that talk to each other from day one. No end-of-day discrepancies. No hours lost chasing two providers.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">1 call</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">0 finger-pointing</p>
         </div>
 
         <!-- Stat 3 -->
-        <div class="border-b border-accent pb-8">
-          <h3 class="font-heading font-medium text-white text-lg mb-2">One venue or thirty</h3>
+        <div data-reveal class="border-b border-accent pb-8">
+          <h3 class="font-heading font-medium text-white text-lg mb-2">Save money</h3>
           <p class="text-white/70 text-sm mb-4">
-            Works the same way whether you're running a pub on your own or a group of sites. Same number, same bloke on the end of it.
+            Most businesses I review are overpaying on card processing. I find where the money's going and I get it back. Then I make sure it stays that way.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">1&ndash;30+</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl"><span data-counter data-target="40" data-suffix="%" data-prefix="20-">20-0%</span></p>
         </div>
       </div>
     </div>

@@ -1,53 +1,60 @@
 ---
 /** AboutStats — exact copy of S03Stats with Why Credo content */
+const image = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80";
 ---
 
 <!-- Section 03 — Stats | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:30 -->
-<section data-figma-ref="8:30" class="bg-navy py-20 sm:py-28 lg:py-32">
-  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+<section data-figma-ref="8:30" class="bg-navy pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32 relative overflow-hidden">
+  <div
+    class="absolute inset-0 bg-cover bg-center pointer-events-none"
+    style={`background-image: url('${image}'); mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%);`}
+    aria-hidden="true"
+  ></div>
+  <div class="absolute inset-0 bg-navy/65 pointer-events-none" aria-hidden="true"></div>
+  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section label -->
-    <p class="text-xs uppercase tracking-widest text-white/60 mb-4">Why Credo exists</p>
+    <p class="text-xs uppercase tracking-widest text-accent mb-4">How I work</p>
     <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
 
     <!-- 2-col grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
       <!-- Left: heading -->
       <div>
-        <h2 class="font-heading font-medium text-white text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6">
-          I built Credo because I got tired of watching good operators get stitched up.
+        <h2 data-reveal class="font-heading font-medium text-white text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6">
+          Independent. Honest. One point of contact.
         </h2>
-        <p class="text-white/70 leading-relaxed">
-          Built on belief and powered by trust isn't a slogan for me, it's how I decide whether to take on a piece of work in the first place.
+        <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-white/70 leading-relaxed">
+          I started Credo FS because I got tired of watching good operators get a raw deal. I've sat where you're sitting. I've had the card machine go down on a Saturday night. I know what that moment feels like, and I know what it means when someone actually picks up the phone.
         </p>
       </div>
 
       <!-- Right: stat rows -->
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-8" data-reveal-group="wide">
         <!-- Stat 1 -->
-        <div class="border-b border-accent pb-8">
-          <h3 class="font-heading font-medium text-white text-lg mb-2">I've done the job</h3>
+        <div data-reveal class="border-b border-accent pb-8">
+          <h3 class="font-heading font-medium text-white text-lg mb-2">No commission from a single brand</h3>
           <p class="text-white/70 text-sm mb-4">
-            Twenty years running pubs and hotels before I ever picked up a card machine to sell, which is why the advice holds up: it's coming from someone who's been the one getting stitched up in the first place.
+            I work with Square, Teya, Sunmi, Elavon, Shift4, Loyverse, and others, because different businesses need different things, and the right answer for your pub isn't necessarily the right answer for the one down the road.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">25+ years</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl"><span data-counter data-target="100" data-suffix="%">0%</span></p>
         </div>
 
         <!-- Stat 2 -->
-        <div class="border-b border-accent pb-8">
-          <h3 class="font-heading font-medium text-white text-lg mb-2">Tills, cards, broadband, funding</h3>
+        <div data-reveal class="border-b border-accent pb-8">
+          <h3 class="font-heading font-medium text-white text-lg mb-2">A relationship, not a product</h3>
           <p class="text-white/70 text-sm mb-4">
-            Most reps can only tell you about the one box they sell. I spent the last five years getting my head around all of it, so when you ring with a problem it isn't someone else's department.
+            When something goes wrong, and in hospitality, something always does, you call me. Not a helpline. Not a chatbot. Not a number that rings out. Me.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">1 call</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl"><span data-counter data-target="1" data-suffix=" number">0 number</span></p>
         </div>
 
         <!-- Stat 3 -->
-        <div class="border-b border-accent pb-8">
+        <div data-reveal class="border-b border-accent pb-8">
           <h3 class="font-heading font-medium text-white text-lg mb-2">Word of mouth</h3>
           <p class="text-white/70 text-sm mb-4">
-            I don't run ads or cold-call anyone. Seven in ten of the people I work with came through someone I'd already helped, and there's a weekly podcast too if you want to hear how other operators are getting on.
+            About 70% of the people I work with came through a recommendation from someone I'd already helped. I don't run ads or cold-call anyone. I just do the work properly and let people talk.
           </p>
-          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl">70%</p>
+          <p class="font-heading font-medium text-accent text-5xl sm:text-6xl"><span data-counter data-target="70" data-suffix="%">0%</span></p>
         </div>
       </div>
     </div>

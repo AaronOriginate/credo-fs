@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/animations.css';
+import WhatsAppLauncher from '../components/credo/WhatsAppLauncher.astro';
 
 interface Props {
   title: string;
@@ -21,11 +23,110 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon-32.png`} />
+    <link rel="icon" type="image/png" sizes="192x192" href={`${base}/favicon.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
     <link rel="preload" href={`${base}/fonts/Inter-400.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}/fonts/SpaceGrotesk-600.woff2`} as="font" type="font/woff2" crossorigin />
   </head>
   <body class="font-body text-dark antialiased">
     <main><slot /></main>
+
+    <WhatsAppLauncher />
+
+    <script is:inline>
+      // Reveal observer + counter animation. One IO instance for the whole page.
+      (function () {
+        if (typeof window === 'undefined') return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const easeUicore = (t) => 1 - Math.pow(1 - t, 4); // approximates cubic-bezier(0.22,1,0.36,1)
+
+        function startCounter(el) {
+          if (el.dataset.counterStarted) return;
+          el.dataset.counterStarted = '1';
+          const target = parseFloat(el.dataset.target || '0');
+          const suffix = el.dataset.suffix || '';
+          const prefix = el.dataset.prefix || '';
+          const duration = parseInt(el.dataset.duration || '2000', 10);
+          const decimals = parseInt(el.dataset.decimals || '0', 10);
+          const useCommas = el.dataset.commas === 'true';
+          const fmt = (v) => {
+            const n = v.toFixed(decimals);
+            if (!useCommas) return n;
+            const [whole, frac] = n.split('.');
+            const wholeWithCommas = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return frac !== undefined ? wholeWithCommas + '.' + frac : wholeWithCommas;
+          };
+          const start = performance.now();
+          function tick(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const v = target * easeUicore(t);
+            el.textContent = prefix + fmt(v) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = prefix + fmt(target) + suffix;
+          }
+          requestAnimationFrame(tick);
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const el = entry.target;
+            if (el.hasAttribute('data-reveal')) {
+              el.classList.add('is-visible');
+            }
+            if (el.hasAttribute('data-counter')) {
+              startCounter(el);
+            }
+            io.unobserve(el);
+          }
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+        function observeAll() {
+          document.querySelectorAll('[data-reveal]:not(.is-visible), [data-counter]:not([data-counter-started])').forEach((el) => io.observe(el));
+        }
+
+        // Accordion: max-height transitions. Default-open items get their scrollHeight set immediately.
+        function setupAccordions() {
+          // Initialise default-open items so their max-height is set
+          document.querySelectorAll('[data-accordion-item][data-open="true"]').forEach((item) => {
+            const content = item.querySelector('[data-accordion-content]');
+            if (content) content.style.setProperty('--content-height', content.scrollHeight + 'px');
+          });
+
+          document.querySelectorAll('[data-accordion-trigger]').forEach((trigger) => {
+            if (trigger.dataset.bound) return;
+            trigger.dataset.bound = '1';
+            trigger.addEventListener('click', () => {
+              const item = trigger.closest('[data-accordion-item]');
+              if (!item) return;
+              const content = item.querySelector('[data-accordion-content]');
+              const isOpen = item.dataset.open === 'true';
+
+              // Close siblings (single-open accordion behaviour, matches WP)
+              const parent = item.parentElement;
+              if (parent) {
+                parent.querySelectorAll('[data-accordion-item]').forEach((sibling) => {
+                  if (sibling !== item) sibling.dataset.open = 'false';
+                });
+              }
+
+              if (content) {
+                content.style.setProperty('--content-height', content.scrollHeight + 'px');
+              }
+              item.dataset.open = isOpen ? 'false' : 'true';
+            });
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => { observeAll(); setupAccordions(); });
+        } else {
+          observeAll();
+          setupAccordions();
+        }
+      })();
+    </script>
   </body>
 </html>

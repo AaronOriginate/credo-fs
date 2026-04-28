@@ -1,45 +1,42 @@
 ---
 /** TwoPathCards — Figma node 4:281 */
 import { href } from '../../lib/nav';
+import Btn from './Btn.astro';
 ---
 
 <section class="w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-16">
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
     <!-- Section label -->
     <p class="uppercase text-sm font-medium tracking-[2px] text-dark">Two ways in</p>
-    <div class="border-t border-accent mt-4"></div>
+    <div class="w-12 h-0.5 bg-accent mt-4"></div>
 
     <!-- Top area: heading + body text -->
     <div class="flex flex-col lg:flex-row gap-8 mt-12 items-end">
       <div class="flex-1">
-        <h2 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Talk it through, or have a look at the kit?</h2>
+        <h2 data-reveal class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Talk it through, or have a look at the kit?</h2>
       </div>
       <div class="lg:w-[440px] shrink-0">
-        <p class="text-lg leading-relaxed text-dark">Some people want a chat first. Others want to see what's out there. Either way, you end up talking to me.</p>
+        <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark">Some people want a chat first. Others want to see what's out there. Either way, you end up talking to me.</p>
       </div>
     </div>
 
     <!-- Bottom area: two cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" data-reveal-group="cards">
       <!-- Card 1: Talk it through -->
-      <div class="bg-navy rounded-lg p-12 flex flex-col justify-center aspect-square">
+      <div data-reveal class="bg-navy rounded-lg p-12 flex flex-col justify-center aspect-square">
         <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-white">Want an honest opinion?</h3>
         <p class="mt-6 text-lg leading-relaxed text-white/80">I'll go through your setup with you, the till, the card machine, the broadband, the booking system, the lot, and tell you what I'd change and what I'd leave alone. It costs nothing and there's no contract.</p>
         <div class="mt-8">
-          <a href={href('/consultancy')} class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
-            Talk to Andy
-          </a>
+          <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
         </div>
       </div>
 
       <!-- Card 2: See the systems -->
-      <div class="bg-light-gray rounded-lg p-12 flex flex-col justify-center aspect-square">
+      <div data-reveal class="bg-light-gray rounded-lg p-12 flex flex-col justify-center aspect-square">
         <h3 class="font-heading font-medium text-[56px] leading-tight tracking-tight text-dark">Know what you're after?</h3>
-        <p class="mt-6 text-lg leading-relaxed text-dark">Have a look at the brands I work with and the setups I put in. Square integrated systems, funding, reservations, broadband. Or just tell me what you need.</p>
+        <p class="mt-6 text-lg leading-relaxed text-dark">Have a look at the systems I put in and the providers I work with. Integrated tills, card processing, bookings, broadband, and funding when it helps.</p>
         <div class="mt-8">
-          <a href={href('/products')} class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
-            See the brands I use
-          </a>
+          <Btn href="/systems-and-solutions" variant="secondary">See the systems</Btn>
         </div>
       </div>
     </div>

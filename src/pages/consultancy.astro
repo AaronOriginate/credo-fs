@@ -5,42 +5,74 @@ import PageHero from "../components/credo/PageHero.astro";
 import ConsultancyStats from "../components/credo/ConsultancyStats.astro";
 import PartnersGrid from "../components/credo/PartnersGrid.astro";
 import ConsultancyProcess from "../components/credo/ConsultancyProcess.astro";
-import TestimonialBlock from "../components/credo/TestimonialBlock.astro";
+import SingleQuote from "../components/credo/SingleQuote.astro";
 import S22FaqAccordion from "../components/sections/S22FaqAccordion.astro";
 import PatternBridge from "../components/credo/PatternBridge.astro";
 import ContactCta from "../components/credo/ContactCta.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
 ---
 
 <Layout title="Consultancy, Credo Financial Services">
   <S01Navigation />
   <PageHero
     bgImage="consultancy"
-    heading="Most card machine reps don't understand your till, and that's where most of the problems start."
+    eyebrow="Consultancy"
+    heading="Your card machine provider isn't losing sleep over what they charge you."
     body={[
-      "A pub these days runs on half a dozen systems, from the till and card machine through to broadband, the booking system, and funding, all of them talking to each other. None of the reps selling you any of it can tell you how the others work.",
-      "So when something goes down it's ping-pong, with the card provider blaming the till and the till blaming the card, and you end up as the one who lost the Friday night. Sound familiar?",
-      "What I do is different. I've run pubs and hotels for twenty years, and I've spent the last five learning the whole setup from end to end. When we talk, we talk about all of it, and when something breaks there's one number to ring.",
+      "Last year I sat down with a restaurant owner in Bristol who was convinced she was on a fair deal. Her provider had told her so. I asked if I could look at her statements.",
+      "She was paying 2.9% on every card transaction. On £15,000 a month in card sales, that's £435 a month in processing fees. I moved her to 1.1%. Her new monthly cost: £165. That's £270 back in her pocket every month. Over £3,200 a year.",
+      "She'd been overpaying for three years. Nobody had told her.",
+      "Why would they?",
     ]}
   />
-  <ConsultancyStats />
+  <!-- ConsultancyStats (white) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <ConsultancyStats />
+  </div>
+  <!-- PartnersGrid (white) — no tilt needed; same bg -->
   <PartnersGrid />
-  <ConsultancyProcess />
-  <TestimonialBlock
-    quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change. Peace of mind knowing that if there's an issue I can call him and it will be rectified very quickly."
-    name="Sallyann Reed"
-    source="Five years as a customer, TrustPilot"
-  />
-  <S22FaqAccordion />
-  <PatternBridge
-    heading="Pubs, restaurants, cafes, bars and sports clubs, whether that's a single site or a small group."
-    linkText="Book a free conversation"
-    linkHref="/contact"
-  />
-  <ContactCta
-    heading="Book a free chat."
-    subtext="I'll ask a few questions about your setup, go through your statements, and give you a straight answer. If there's a better deal out there I'll find it, and if there isn't I'll tell you that, so you've lost nothing either way."
-    hint="Call, WhatsApp or send a message. There's no cost and no contract."
-  />
+  <!-- ConsultancyProcess (light-gray) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <ConsultancyProcess />
+  </div>
+  <!-- TestimonialBlock (white) -->
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="right" />
+    <SingleQuote
+      label="Proof"
+      heading="Five years and counting"
+      quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change."
+      name="Sallyann Reed"
+      source="Five years as a customer, TrustPilot"
+      linkText="Read all reviews on TrustPilot"
+      linkHref="/reviews"
+    />
+  </div>
+  <!-- FAQ (light-gray gradient) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <S22FaqAccordion />
+  </div>
+  <!-- PatternBridge (accent) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="right" />
+    <PatternBridge
+      heading="Pubs, restaurants, cafes, bars, and sports clubs. Single sites and small groups across the South West and London."
+      linkText="Arrange a call with Andy"
+      linkHref="#"
+    />
+  </div>
+  <!-- ContactCta (navy) -->
+  <div class="relative">
+    <TiltDivider from="accent" direction="left" />
+    <ContactCta
+      heading="Find out if you're overpaying. It takes fifteen minutes."
+      subtext="I'll look at your statements, check your setup, and give you an honest answer. If there's something better out there, I'll find it. If not, we shake hands and you've lost nothing."
+      hint="No cost and no contract."
+    />
+  </div>
   <S10Footer />
 </Layout>

@@ -6,3 +6,8 @@ audit-screenshots/
 screenshots/
 *.png
 !public/**/*.png
+
+# Local-only working files
+public/images/credo/_wp-source/
+public/images/credo/hero-bg-consultancy-old.webp
+ANIMATION-PLAN.md

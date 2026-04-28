@@ -13,6 +13,7 @@ import StatsGrid from "../components/credo/StatsGrid.astro";
 import CtaBand from "../components/credo/CtaBand.astro";
 import TrustpilotSummary from "../components/credo/TrustpilotSummary.astro";
 import FeatureCards from "../components/credo/FeatureCards.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
 ---
 
@@ -23,24 +24,38 @@ import S10Footer from "../components/sections/S10Footer.astro";
   <HeroHome />
 
   <!-- S2: Problem validation — light gray bg wrapper -->
-  <div class="bg-light-gray">
+  <div id="hero-next" class="bg-light-gray scroll-mt-20 relative">
+    <TiltDivider from="white" direction="right" />
     <NarrativeBlock />
   </div>
 
   <!-- S3: The alternative — navy bg (built-in) -->
-  <NavyStatement />
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="left" />
+    <NavyStatement />
+  </div>
 
   <!-- S4: How it works — white bg -->
-  <StepCards />
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <StepCards />
+  </div>
 
   <!-- S5: Stats — navy bg (built-in) -->
-  <StatsGrid />
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <StatsGrid />
+  </div>
 
   <!-- S6: Lime accent band — full width breaker -->
-  <CtaBand />
+  <div class="relative">
+    <TiltDivider from="navy" direction="right" />
+    <CtaBand />
+  </div>
 
   <!-- S7: Two paths — light gray bg wrapper -->
-  <div class="bg-light-gray">
+  <div class="bg-light-gray relative">
+    <TiltDivider from="accent" direction="left" />
     <TwoPathCards />
   </div>
 
@@ -48,14 +63,20 @@ import S10Footer from "../components/sections/S10Footer.astro";
   <FeatureCards />
 
   <!-- S9: Proof — white bg -->
-  <TrustpilotSummary />
+  <div class="relative bg-white">
+    <TiltDivider from="light-gray" direction="right" />
+    <TrustpilotSummary />
+  </div>
   <SingleQuote />
 
   <!-- S9b: Podcast carousel — placeholder until first 3 episodes exist -->
   <PodcastCarousel />
 
   <!-- S10: Final CTA — navy bg (built-in) -->
-  <ContactCta />
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <ContactCta />
+  </div>
 
   <S10Footer />
 </Layout>

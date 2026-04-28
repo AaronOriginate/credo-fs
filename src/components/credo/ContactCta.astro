@@ -1,29 +1,28 @@
 ---
 /** ContactCta — Figma node 4:485 */
 import { href } from '../../lib/nav';
+import Btn from './Btn.astro';
 interface Props {
   heading?: string;
   subtext?: string;
   hint?: string;
 }
 const {
-  heading = "Let's have a chat.",
-  subtext = "There's no sales pitch and no contract to sign. Just a conversation about what might work for your business.",
-  hint = "Pick whichever suits you:",
+  heading = "Ready to find out if you're getting a fair deal?",
+  subtext = "Fifteen minutes. I'll look at what you've got, tell you what I see, and give you a straight answer.",
+  hint = "No sales pitch. No contract to sign.",
 } = Astro.props;
 ---
 
 <section class="bg-navy w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-24">
-    <h2 class="font-heading font-medium text-[80px] leading-tight tracking-tight text-white text-center">{heading}</h2>
-    <p class="text-lg leading-relaxed text-white/70 text-center max-w-[700px] mx-auto mt-6">{subtext}</p>
-    <p class="text-base text-white/50 text-center mt-3">{hint}</p>
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+    <h2 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.025em] text-white text-center" style="font-size: clamp(2.25rem, 6vw, 5rem);">{heading}</h2>
+    <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-white/70 text-center max-w-[700px] mx-auto mt-6">{subtext}</p>
+    <p data-reveal="fade" style="--reveal-delay: 350ms;" class="text-base text-white/50 text-center mt-3">{hint}</p>
 
     <!-- Buttons row -->
-    <div class="flex flex-wrap justify-center gap-4 mt-8">
-      <a href={href('/contact')} class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 font-semibold text-base text-dark transition hover:opacity-90">
-        Let's have a chat
-      </a>
+    <div data-reveal="fade" style="--reveal-delay: 500ms;" class="flex flex-wrap justify-center gap-4 mt-8">
+      <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
     </div>
   </div>
 </section>

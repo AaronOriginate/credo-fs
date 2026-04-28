@@ -1,26 +1,27 @@
 ---
 import { href } from '../../lib/nav';
+import Btn from './Btn.astro';
 ---
 <!-- Figma node: 4:770 — TrustpilotSummary -->
 <section class="bg-white w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-24">
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
     <!-- Section label + yellow divider -->
     <p class="uppercase text-sm font-medium tracking-[2px] text-dark">
       Trustpilot
     </p>
-    <div class="border-t border-accent mt-4"></div>
+    <div class="w-12 h-0.5 bg-accent mt-4"></div>
 
     <!-- Trustpilot table -->
-    <div class="flex flex-col lg:flex-row border border-[#ccced3] rounded-lg overflow-hidden mt-12">
+    <div class="flex flex-col lg:flex-row border border-[#ccced3] rounded-lg overflow-hidden mt-12" data-reveal-group="cards">
       <!-- Left panel — large heading -->
-      <div class="lg:w-[35%] p-7 flex items-start">
+      <div data-reveal class="lg:w-[35%] p-7 flex items-start">
         <h2 class="font-heading font-medium text-[56px] leading-tight text-dark tracking-[-1.4px]">
           5.0 out of 5 on TrustPilot
         </h2>
       </div>
 
       <!-- Column: 6 Reviews -->
-      <div class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
+      <div data-reveal class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
         <h3 class="font-heading font-medium text-2xl text-dark tracking-[-0.6px]">
           6 Reviews
         </h3>
@@ -31,13 +32,11 @@ import { href } from '../../lib/nav';
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">5.0</span>
           <span class="text-sm text-dark mb-3">/ 5 stars</span>
         </div>
-        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
-          Read Reviews
-        </a>
+        <div class="mt-4"><Btn href="/reviews" variant="primary" size="sm">Read Reviews</Btn></div>
       </div>
 
       <!-- Column: Verified -->
-      <div class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
+      <div data-reveal class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
         <h3 class="font-heading font-medium text-2xl text-dark tracking-[-0.6px]">
           Verified
         </h3>
@@ -48,13 +47,11 @@ import { href } from '../../lib/nav';
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">100</span>
           <span class="text-sm text-dark mb-3">% real</span>
         </div>
-        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
-          View Profile
-        </a>
+        <div class="mt-4"><Btn href="/reviews" variant="primary" size="sm">View Profile</Btn></div>
       </div>
 
       <!-- Column: Recent -->
-      <div class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
+      <div data-reveal class="flex-1 border-t lg:border-t-0 lg:border-l border-[#ccced3] p-7 flex flex-col">
         <h3 class="font-heading font-medium text-2xl text-dark tracking-[-0.6px]">
           Recent
         </h3>
@@ -65,9 +62,7 @@ import { href } from '../../lib/nav';
           <span class="font-heading font-medium text-[56px] leading-[70px] text-dark tracking-[-1.4px]">6</span>
           <span class="text-sm text-dark mb-3">reviews</span>
         </div>
-        <a href={href('/reviews')} class="bg-accent rounded-lg px-6 py-3 text-center font-semibold text-[#2d3748] mt-4 inline-block">
-          See All
-        </a>
+        <div class="mt-4"><Btn href="/reviews" variant="primary" size="sm">See All</Btn></div>
       </div>
     </div>
   </div>

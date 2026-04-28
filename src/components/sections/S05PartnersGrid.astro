@@ -1,3 +1,6 @@
+---
+import BtnText from '../credo/BtnText.astro';
+---
 <!-- Section 05 — Partners Grid | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:146 -->
 <section data-figma-ref="8:146" class="bg-white py-20 sm:py-28 lg:py-32">
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -6,7 +9,7 @@
     <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
 
     <!-- 2-col heading -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 mb-12 sm:mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-24 mb-12 sm:mb-16">
       <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight">
         I don't sell one brand. I find the right one for your business.
       </h2>
@@ -16,10 +19,10 @@
     </div>
 
     <!-- 2-col content: device image + brand tiles -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
       <!-- Left: device image -->
       <div>
-        <div class="w-full aspect-[4/3] bg-navy rounded-2xl overflow-hidden flex items-center justify-center p-8">
+        <div class="w-full aspect-[4/3] bg-navy rounded-lg overflow-hidden flex items-center justify-center p-8">
           <img
             src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/Gemini_Generated_Image_zcs84pzcs84pzcs8.png"
             alt="Tablet device"
@@ -56,10 +59,7 @@
             </div>
           ))}
         </div>
-        <a href="/partners" class="text-sm font-semibold text-[#2d8a6e] hover:underline transition-colors flex items-center gap-1.5">
-          See all 99+ integrations
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
+        <BtnText href="/partners" class="text-sm font-semibold text-[#2d8a6e] transition-colors">See all 99+ integrations</BtnText>
       </div>
     </div>
   </div>

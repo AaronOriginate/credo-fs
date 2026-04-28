@@ -1,0 +1,68 @@
+---
+/**
+ * TiltDivider — angled SVG divider that overlays the TOP of the next section.
+ *
+ * Render this divider INSIDE the next section (or immediately before it as a
+ * sibling that absolutely overlays its top edge). The triangle is drawn in the
+ * previous section's color, sitting on top of the new section, so the diagonal
+ * "eats into" the new section instead of adding stacked height.
+ *
+ * Usage:
+ *   <TiltDivider from="white" direction="right" />
+ *   <SectionWithNavyBg />
+ *
+ * The divider has zero intrinsic height — it's absolutely positioned. Wrap it
+ * with the next section using a `relative` parent, OR place the divider at the
+ * top of the next section's `<section>` element (which must be `relative`).
+ *
+ * Direction:
+ *   "right" — diagonal falls down to the right (\)
+ *   "left"  — diagonal falls down to the left  (/)
+ */
+interface Props {
+  from?: string;
+  direction?: 'left' | 'right';
+  height?: number;
+}
+const {
+  from = 'white',
+  direction = 'right',
+  height = 80,
+} = Astro.props;
+
+const colorMap: Record<string, string> = {
+  white: '#ffffff',
+  'light-gray': '#f3f4f6',
+  navy: '#1a2d46',
+  accent: '#e8ea3a',
+  dark: '#0f1419',
+};
+
+const resolveColor = (c: string) => colorMap[c] ?? c;
+const fromColor = resolveColor(from);
+
+// Slight randomization +/- 4 units so each tilt feels hand-drawn
+const jitter = Math.floor(Math.random() * 9) - 4;
+
+// Triangle in the "from" color sits at the top of the next section.
+// direction=right → triangle high on left, low on right (slope falls right)
+// direction=left  → triangle low on left, high on right (slope falls left)
+const polygonPoints = direction === 'right'
+  ? `0,0 100,0 0,${height + jitter}`
+  : `0,0 100,0 100,${height + jitter}`;
+---
+
+<div
+  class="absolute top-0 left-0 right-0 w-full overflow-hidden leading-[0] pointer-events-none z-20"
+  style={`height: ${height}px;`}
+  aria-hidden="true"
+>
+  <svg
+    class="block w-full h-full"
+    viewBox={`0 0 100 ${height}`}
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon points={polygonPoints} fill={fromColor} />
+  </svg>
+</div>

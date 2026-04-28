@@ -1,41 +1,45 @@
 ---
 /** PartnersGrid — exact copy of S05PartnersGrid with Credo brands */
 import { href } from '../../lib/nav';
+import BtnText from './BtnText.astro';
 interface Props {
   heading?: string;
   subtext?: string;
 }
 const {
-  heading = "I don't push one brand, I pick the right one for the job.",
-  subtext = "I work with a handful of brands across tills, card machines, funding, bookings and broadband. Most of what I fit is a Square integrated setup, because it just works better than anything else I've seen. If that isn't right for you I'll put in something else, and if what you've got already does the job I'll tell you that too.",
+  heading = "I don't sell one brand. I find the right one.",
+  subtext = "I work with eight providers, Square, Teya, Sunmi, Elavon, Shift4, Loyverse, Kuulseats, and Liberis, because different businesses need different things. When I review your setup, I'm not trying to push you toward one product. I'm looking for what actually fits. The right answer for a 40-cover restaurant in Bristol isn't necessarily the right answer for a late-night bar in London. I know the difference. And I'll tell you straight.",
 } = Astro.props;
 ---
 
 <!-- Section 05 — Partners Grid | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:146 -->
-<section data-figma-ref="8:146" class="bg-white py-20 sm:py-28 lg:py-32">
+<section data-figma-ref="8:146" class="bg-white pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
   <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section label -->
-    <p class="text-xs uppercase tracking-widest text-gray-text mb-4">Partners I Trust</p>
+    <p class="text-xs uppercase tracking-widest text-dark mb-4">Partners I Trust</p>
     <div class="w-12 h-0.5 bg-accent mb-12 sm:mb-16"></div>
 
     <!-- 2-col heading -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 mb-12 sm:mb-16">
-      <h2 class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-24 mb-12 sm:mb-16">
+      <h2 data-reveal class="font-heading font-medium text-dark text-3xl sm:text-4xl lg:text-5xl leading-tight">
         {heading}
       </h2>
-      <p class="text-gray-text leading-relaxed self-end">
+      <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-gray-text leading-relaxed self-end">
         {subtext}
       </p>
     </div>
 
     <!-- 2-col content: device image + brand tiles -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
       <!-- Left: device image -->
-      <div>
-        <div class="w-full aspect-[4/3] bg-navy rounded-2xl overflow-hidden flex items-center justify-center p-8">
+      <div data-reveal="fade">
+        <div class="w-full aspect-[4/3] bg-navy rounded-lg overflow-hidden flex items-center justify-center p-8">
           <img
-            src="https://credofsdev.wpenginepowered.com/wp-content/uploads/2026/02/Gemini_Generated_Image_zcs84pzcs84pzcs8.png"
+            src={`${import.meta.env.BASE_URL}/images/credo/partners-device.webp`}
             alt="Tablet device"
+            width="1024"
+            height="1024"
+            loading="lazy"
             class="max-w-full max-h-full object-contain"
           />
         </div>
@@ -43,19 +47,17 @@ const {
 
       <!-- Right: brand tiles grid + link -->
       <div class="flex flex-col justify-center">
-        <div class="grid grid-cols-2 gap-3 mb-8">
+        <div class="grid grid-cols-2 gap-3 mb-8" data-reveal-group="tight">
           {[
-            "Square", "Teya", "Sunmi", "Shift4",
-            "Loyverse", "Liberis", "U-Lend", "Call Seats"
+            "Square", "Teya", "Sunmi", "Elavon",
+            "Shift4", "Loyverse", "Kuulseats", "Liberis"
           ].map((brand) => (
-            <div class="bg-light-gray rounded-lg py-3 px-4 text-center text-sm font-medium text-dark">
+            <div data-reveal class="bg-light-gray rounded-lg py-3 px-4 text-center text-sm font-medium text-dark">
               {brand}
             </div>
           ))}
         </div>
-        <a href={href('/products')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
-          See all partners &rarr;
-        </a>
+        <BtnText href="/systems-and-solutions" class="text-sm font-semibold text-dark hover:text-accent transition-colors">See all partners</BtnText>
       </div>
     </div>
   </div>

@@ -1,0 +1,26 @@
+---
+import { href as navHref } from '../../lib/nav';
+interface Props {
+  href: string;
+  class?: string;
+  arrow?: boolean;
+  external?: boolean;
+}
+const { href, class: extraClass = '', arrow = true, external = false } = Astro.props;
+const slot = await Astro.slots.render('default');
+const resolvedHref = href.startsWith('#') || href.startsWith('http') ? href : navHref(href);
+const externalAttrs = external ? { target: '_blank', rel: 'noopener' } : {};
+---
+<a href={resolvedHref} class={`btn-text ${extraClass}`} {...externalAttrs}>
+  <span class="btn-text-wrap">
+    <span class="btn-text-a" set:html={slot} />
+    <span class="btn-text-b" set:html={slot} />
+  </span>
+  {arrow && (
+    <span class="btn-arrow inline-flex items-center" aria-hidden="true">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M13 5l7 7-7 7"/>
+      </svg>
+    </span>
+  )}
+</a>

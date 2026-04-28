@@ -1,11 +1,12 @@
 ---
 /** HeroHome — Figma node 4:6 */
 import { href } from '../../lib/nav';
+import Btn from './Btn.astro';
 ---
 
-<section class="bg-white w-full relative overflow-hidden">
-  <!-- Geometric arrow graphic — top-left, breaks into nav (matches WP) -->
-  <div class="absolute -top-8 sm:-top-10 -left-6 sm:-left-8 w-[120px] sm:w-[140px] lg:w-[180px] h-auto z-0 pointer-events-none">
+<section class="bg-white w-full relative overflow-hidden min-h-[100svh] flex items-center">
+  <!-- Chunky credo graphic, clipping off top-left. Hidden on mobile so it doesn't overlap headline. -->
+  <div class="hidden lg:block absolute overflow-hidden z-0 pointer-events-none -top-40 xl:-top-8" style="width: clamp(140px, 18vw, 360px); aspect-ratio: 626 / 744; left: clamp(-3rem, -2vw, 0rem);">
     <img
       src={`${import.meta.env.BASE_URL}/images/credo/hero-credo4.png`}
       alt=""
@@ -17,28 +18,45 @@ import { href } from '../../lib/nav';
     />
   </div>
 
-  <div class="max-w-[1232px] mx-auto px-8 pt-32 sm:pt-40 pb-20 sm:pb-28 flex flex-col items-center relative z-10">
-    <!-- Headline -->
-    <h1 class="font-heading font-medium text-[48px] sm:text-[64px] lg:text-[92px] leading-tight tracking-[-2.3px] text-center text-dark">
-      It's Saturday night, your card machine's gone down, and nobody's picking up the phone.
+  <div class="max-w-[1232px] w-full mx-auto px-8 py-20 flex flex-col items-center relative z-10">
+    <!-- Headline (fluid, large) -->
+    <h1 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.02em] text-center text-dark max-w-5xl mx-auto" style="font-size: clamp(2rem, 5.5vw, 5.25rem);">
+      When your till goes down on a Saturday night, you need one person who picks up the phone. Not a helpdesk. Not a different department. Me.
     </h1>
 
     <!-- Subtext -->
-    <p class="text-lg leading-relaxed text-dark text-center max-w-[600px] mx-auto mt-4">
-      You deserve someone who actually answers, and a deal you can understand.
+    <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark text-center max-w-[640px] mx-auto mt-6">
+      Andy Miller. Pub systems expert. 40 years in hospitality. One number.
     </p>
 
     <!-- Buttons -->
-    <div class="flex flex-row gap-4 mt-8">
-      <a href={href('/contact')} class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-flex items-center gap-1.5">
-        Let's have a chat
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
-          <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <a href={href('/consultancy')} class="bg-transparent rounded-lg px-8 py-3 font-semibold text-dark">
-        See how it works
-      </a>
+    <div data-reveal="fade" style="--reveal-delay: 400ms;" class="flex flex-row gap-4 mt-8">
+      <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
+      <Btn href="/consultancy" variant="secondary" arrow={false}>See how it works</Btn>
     </div>
   </div>
+
+  <!-- Scroll down indicator -->
+  <a
+    href="#hero-next"
+    aria-label="Scroll to next section"
+    class="hero-scroll absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center transition-opacity hover:opacity-80"
+  >
+    <svg class="w-10 h-10 hero-scroll-arrow text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 5v14M19 12l-7 7-7-7" />
+    </svg>
+  </a>
 </section>
+
+<style>
+  .hero-scroll-arrow {
+    animation: hero-scroll-bounce 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes hero-scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-arrow { animation: none; }
+  }
+</style>

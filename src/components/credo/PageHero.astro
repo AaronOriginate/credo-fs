@@ -22,23 +22,20 @@ const bgUrl = bgImage ? `${import.meta.env.BASE_URL}/images/credo/hero-bg-${bgIm
 ---
 
 <!-- Section 02 — Hero | Figma: fileKey=RxueMLDFnpgheWZp4MVk7f nodeId=8:24 -->
-<section data-figma-ref="8:24" class={`relative overflow-hidden py-24 sm:py-32 lg:py-40 ${isLarge ? 'bg-white' : 'bg-navy'}`}>
+<section data-figma-ref="8:24" class={`relative overflow-hidden py-16 sm:py-20 lg:py-24 ${isLarge ? 'bg-white' : 'bg-navy'}`}>
   {bgUrl && (
     <>
-      <img
-        src={bgUrl}
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover z-0"
+      <div
+        class="absolute inset-0 bg-cover bg-center pointer-events-none z-0"
+        style={`background-image: url('${bgUrl}'); mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%);`}
         aria-hidden="true"
-        loading="eager"
-        fetchpriority="high"
-      />
-      <div class="absolute inset-0 bg-navy/55 z-0" aria-hidden="true"></div>
+      ></div>
+      <div class="absolute inset-0 bg-navy/65 pointer-events-none z-0" aria-hidden="true"></div>
     </>
   )}
 
-  <!-- Chunky credo graphic, top-left (white variant on navy sub-page hero, navy on home) -->
-  <div class="absolute -top-6 sm:-top-8 -left-4 sm:-left-6 w-[100px] sm:w-[130px] lg:w-[170px] h-auto pointer-events-none z-20">
+  <!-- Chunky credo graphic, clipping off top-left (white+lime variant on navy sub-page hero, navy+lime on home). Hidden on mobile to avoid overlapping headline. -->
+  <div class="hidden lg:block absolute overflow-hidden pointer-events-none z-20 -top-40 xl:-top-8" style="width: clamp(140px, 18vw, 360px); aspect-ratio: 626 / 744; left: clamp(-3rem, -2vw, 0rem);">
     <img
       src={`${import.meta.env.BASE_URL}/images/credo/${isLarge ? 'hero-credo4.png' : 'hero-credo4-white.png'}`}
       alt=""
@@ -49,14 +46,14 @@ const bgUrl = bgImage ? `${import.meta.env.BASE_URL}/images/credo/hero-bg-${bgIm
     />
   </div>
 
-  <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class={`max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${isLarge ? '' : 'md:pt-[clamp(4rem,8vw,7rem)]'}`}>
     {isLarge ? (
       <!-- Home page: centered, massive -->
       <Fragment>
         {eyebrow && (
-          <p class="text-xs uppercase tracking-widest text-gray-text text-center mb-6">{eyebrow}</p>
+          <p class="text-xs uppercase tracking-widest text-dark text-center mb-6">{eyebrow}</p>
         )}
-        <h1 class="font-heading font-medium text-dark text-center text-4xl sm:text-6xl lg:text-[92px] lg:leading-[1.05] max-w-5xl mx-auto">
+        <h1 class="font-heading font-medium text-dark text-center leading-[1.1] tracking-[-0.02em] max-w-5xl mx-auto" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem);">
           {heading}
         </h1>
         {subtext && (
@@ -69,10 +66,10 @@ const bgUrl = bgImage ? `${import.meta.env.BASE_URL}/images/credo/hero-bg-${bgIm
       <!-- Sub-pages: left-aligned, smaller, 2-col with body text, navy bg -->
       <Fragment>
         {eyebrow && (
-          <p class="text-xs uppercase tracking-widest text-white/60 mb-6">{eyebrow}</p>
+          <p class="text-xs uppercase tracking-widest text-accent mb-6">{eyebrow}</p>
         )}
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
-          <h1 class="font-heading font-medium text-white text-3xl sm:text-5xl lg:text-[56px] lg:leading-[1.15] tracking-tight">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-24">
+          <h1 class="font-heading font-medium text-white leading-[1.1] tracking-[-0.02em]" style="font-size: clamp(1.5rem, 3.5vw, 2.75rem);">
             {heading}
           </h1>
           {(body || subtext) && (

@@ -1,40 +1,50 @@
 ---
 /** NarrativeBlock — Figma node 4:38 */
 import { href } from '../../lib/nav';
+import Btn from './Btn.astro';
 ---
 
 <section class="w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-16">
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
     <!-- Top section: two-column layout -->
-    <div class="flex flex-row gap-8 items-start">
+    <div class="flex flex-row gap-16 lg:gap-24 items-start">
       <!-- Left column: image placeholder (~45%) -->
-      <div class="w-[45%] shrink-0">
+      <div class="w-[45%] shrink-0" data-reveal="fade">
         <div class="bg-navy rounded-lg overflow-hidden aspect-[4/5]">
           <img src={`${import.meta.env.BASE_URL}/images/credo/narrative-person.webp`} alt="Andy Sherborne" width="600" height="668" loading="lazy" class="w-full h-full object-cover" />
         </div>
       </div>
 
       <!-- Right column: copy + CTA + logos (~55%) -->
-      <div class="flex-1 flex flex-col">
-        <!-- Intro -->
-        <p class="font-heading font-medium text-2xl sm:text-3xl text-dark leading-snug mb-6">
-          I'm Andy. I spent twenty years running pubs and hotels before I started looking after the kit that keeps them running.
-        </p>
+      <div class="flex-1 flex flex-col" data-reveal-group>
+        <!-- Section heading -->
+        <h2 data-reveal class="font-heading font-medium text-dark leading-[1.1] tracking-[-0.02em] mb-6" style="font-size: clamp(1.875rem, 4vw, 3.25rem);">
+          Sound familiar?
+        </h2>
         <!-- Body text -->
-        <p class="text-[22px] leading-[38.5px] text-dark">
-          Owners don't need more sales calls. They need one person who understands the till, the card machine, the reservations, the funding, the broadband, and how all of it fits together.
+        <p data-reveal class="text-[22px] leading-[38.5px] text-dark">
+          A card machine rep walks into your pub. First thing you ask: <em>"Does it integrate with my EPOS system?"</em>
         </p>
-        <p class="text-base leading-relaxed text-gray-text mt-4">
-          Most of the time the kit fails because nobody's actually in charge of the whole thing. The card provider blames the till, the till blames the card, and you're the one stood in the middle of a Saturday night trying to work out who to ring.
+        <p data-reveal class="text-base leading-relaxed text-gray-text mt-4">
+          And that's exactly the problem.
         </p>
-        <p class="text-base leading-relaxed text-gray-text mt-4">
-          That's where I come in. You ring me and I sort it, whether that's quoting for a new setup, fixing what you've already got, or telling you nothing needs changing.
+        <p data-reveal class="text-base leading-relaxed text-gray-text mt-4">
+          You're not asking because you love your current till. You're asking because your entire business lives on it. Your menu, your staff, your sales data, your end-of-day. Switching feels like a risk you can't afford to take. So you switch the card machine, save a few quid a month, and sign an 18-month contract.
+        </p>
+        <p data-reveal class="text-base leading-relaxed text-gray-text mt-4">
+          Six weeks later, the wifi drops. The till and the card machine stop talking to each other. You call the EPOS company. They tell you to call the card machine company. The card machine company tells you to call the EPOS company. It's Saturday night. Nobody's fixing anything.
+        </p>
+        <p data-reveal class="text-base leading-relaxed text-gray-text mt-4">
+          This is the reality for around 70% of pubs and restaurants in the UK. Two separate systems, two separate providers, and you caught in the middle.
+        </p>
+        <p data-reveal class="text-base leading-relaxed text-gray-text mt-4">
+          I built Credo FS to change that.
         </p>
 
         <!-- Yellow CTA button -->
-        <a href={href('/contact')} class="bg-accent rounded-lg px-8 py-3 font-semibold text-dark inline-block w-fit mt-6">
-          Let's talk
-        </a>
+        <div data-reveal class="mt-6 w-fit">
+          <Btn href="/contact" variant="primary">Arrange a call with Andy</Btn>
+        </div>
 
         <!-- Trust bar -->
         <div class="mt-12">

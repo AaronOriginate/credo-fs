@@ -7,6 +7,8 @@ import ReviewCards from "../components/credo/ReviewCards.astro";
 import ThemeStats from "../components/credo/ThemeStats.astro";
 import ContactCta from "../components/credo/ContactCta.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import BtnText from "../components/credo/BtnText.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
 import { href } from '../lib/nav';
 ---
 
@@ -14,24 +16,38 @@ import { href } from '../lib/nav';
   <S01Navigation />
   <PageHero
     bgImage="reviews"
+    eyebrow="Reviews"
     heading="Don't take my word for it."
-    subtext="Every review here is from a real hospitality business on TrustPilot. I haven't edited a word."
+    body={[
+      "Every review below is from a real hospitality business owner, posted on TrustPilot. I haven't changed a word.",
+      "5.0 out of 5. 6 reviews. Every one five stars. December 2025 to February 2026.",
+    ]}
   />
-  <TrustpilotSummary />
+  <!-- TrustpilotSummary (white) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <TrustpilotSummary />
+  </div>
+  <!-- ReviewCards (white) — no tilt; same bg -->
   <ReviewCards />
-  <ThemeStats />
+  <!-- ThemeStats (light-gray) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <ThemeStats />
+  </div>
   <!-- Cross-link to About -->
   <div class="bg-light-gray pb-16 -mt-4">
     <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-      <a href={href('/about')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
-        Read Andy's story &rarr;
-      </a>
+      <BtnText href="/about" class="text-sm font-semibold text-dark hover:text-accent transition-colors">Read Andy's story</BtnText>
     </div>
   </div>
-  <ContactCta
-    heading="If you're wondering whether it's worth a conversation, it is."
-    subtext="It costs nothing, and I'll check your setup and give you a straight answer."
-    hint="Or read the reviews yourself on TrustPilot first, that's fine too."
-  />
+  <!-- ContactCta (navy) -->
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="right" />
+    <ContactCta
+      heading="If you're wondering whether it's worth a conversation, it is."
+      subtext="It costs nothing. I'll look at your setup and give you a straight answer. If there's nothing to change, I'll tell you that too."
+    />
+  </div>
   <S10Footer />
 </Layout>

@@ -1,19 +1,19 @@
 <!-- Figma node: 4:929 — ContactForm -->
 <section class="bg-gradient-to-b from-light-gray to-white w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-24">
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
     <!-- Section label RIGHT-ALIGNED + yellow divider -->
     <p class="font-body font-medium text-sm text-dark tracking-[2px] uppercase text-right">
       Contact
     </p>
-    <div class="border-t border-accent mt-4"></div>
+    <div class="w-12 h-0.5 bg-accent mt-4 ml-auto"></div>
 
     <!-- Heading -->
-    <h2 class="font-heading font-medium text-[56px] leading-[70px] tracking-[-1.4px] text-dark text-center mt-12">
+    <h2 data-reveal class="font-heading font-medium text-[56px] leading-[70px] tracking-[-1.4px] text-dark text-center mt-12">
       Tell me a bit about yourself.
     </h2>
 
     <!-- Navy form card -->
-    <div class="bg-navy rounded-lg p-12 mt-12">
+    <div data-reveal="fade" style="--reveal-delay: 200ms;" class="bg-navy rounded-lg p-12 mt-12">
       <form class="flex flex-col gap-0">
         <!-- Name field -->
         <div class="border-b-2 border-accent pb-6 pt-8">
@@ -52,8 +52,16 @@
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="bg-accent rounded-lg py-4 mt-10 font-heading font-semibold text-dark text-lg w-full hover:brightness-95 transition-all">
-          Send message
+        <button type="submit" class="btn-flip btn-primary rounded-lg py-4 mt-10 font-heading font-semibold text-lg w-full inline-flex items-center justify-center gap-2 leading-none">
+          <span class="btn-arrow inline-flex items-center" aria-hidden="true">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </span>
+          <span class="btn-text-wrap relative inline-block overflow-hidden">
+            <span class="btn-text-a block">Send message</span>
+            <span class="btn-text-b absolute inset-0 block">Send message</span>
+          </span>
         </button>
       </form>
     </div>

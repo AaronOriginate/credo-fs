@@ -4,17 +4,17 @@ import { href } from '../../lib/nav';
 ---
 
 <section class="bg-accent w-full">
-  <div class="max-w-[1232px] mx-auto px-8 py-24">
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
     <!-- Large centered heading -->
-    <h2 class="font-heading font-medium text-[80px] leading-tight tracking-tight text-dark text-center">Book a free conversation.</h2>
+    <h2 data-reveal class="font-heading font-medium leading-[1.05] tracking-[-0.025em] text-dark text-center" style="font-size: clamp(2.25rem, 6vw, 5rem);">The root cause nobody talks about.</h2>
 
     <!-- Sub-text -->
-    <p class="text-lg leading-relaxed text-dark/70 text-center max-w-[700px] mx-auto mt-4">Fifteen minutes. I'll ask about your setup, tell you what I see, and give you an honest answer.</p>
+    <p data-reveal="fade" style="--reveal-delay: 200ms;" class="text-lg leading-relaxed text-dark/70 text-center max-w-[760px] mx-auto mt-4">90% of EPOS and card machine issues come down to one thing: the wifi link between the two systems going down. Most providers ignore this because it's not their problem to fix. I solve it at the source. Where appropriate, I provide dedicated Starlink satellite connectivity as part of the managed solution, meaning the system that runs your business has its own reliable connection, completely separate from your venue's general wifi. No dropped connections. No Saturday night emergencies. No excuses.</p>
 
     <!-- Centered button -->
     <div class="flex justify-center mt-8">
-      <a href={href('/contact')} class="inline-flex items-center justify-center rounded-lg bg-dark px-8 py-4 font-semibold text-base text-white transition hover:opacity-90">
-        Get in Touch
+      <a data-reveal style="--reveal-delay: 400ms;" data-btn href="#" class="inline-flex items-center justify-center rounded-lg border-2 border-navy px-8 py-4 font-semibold text-base text-dark transition hover:bg-navy hover:text-white">
+        Arrange a call with Andy
       </a>
     </div>
   </div>

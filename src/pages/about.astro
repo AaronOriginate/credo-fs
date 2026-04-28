@@ -3,11 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import S01Navigation from "../components/sections/S01Navigation.astro";
 import PageHero from "../components/credo/PageHero.astro";
 import AboutHospitality from "../components/credo/AboutHospitality.astro";
+import AboutWhy from "../components/credo/AboutWhy.astro";
 import AboutStats from "../components/credo/AboutStats.astro";
-import TestimonialBlock from "../components/credo/TestimonialBlock.astro";
+import SingleQuote from "../components/credo/SingleQuote.astro";
 import AboutPersonal from "../components/credo/AboutPersonal.astro";
 import ContactCta from "../components/credo/ContactCta.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import BtnText from "../components/credo/BtnText.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
 import { href } from '../lib/nav';
 ---
 
@@ -16,49 +19,68 @@ import { href } from '../lib/nav';
   <PageHero
     bgImage="about"
     eyebrow="About Andy"
-    heading="When it matters, people want a person, not a system."
+    heading="There's a moment I keep coming back to."
     body={[
-      "I'm twenty-three, navigating a container ship through a typhoon off the coast of Japan, and the only thing between us and the rocks is a compass, a chart, and whether I'd done my job properly.",
-      "The Merchant Navy teaches you something that sticks, and twenty years running pubs and hotels drilled it in further. When the wheels come off, people don't want a help desk, they want someone who's been in the same boat and knows what to do.",
+      "I was twenty-three, navigating a container ship through a typhoon off the coast of Japan. Between us and the rocks: a compass, a chart, and whether I'd done my job properly.",
+      "The Merchant Navy teaches you something that stays with you. When it matters, people don't want a system. They want a person who knows what they're doing and picks up the phone.",
+      "That's still how I work. Forty years later.",
     ]}
   />
-  <AboutHospitality />
-  <AboutStats />
-  <!-- Proof narrative -->
-  <section class="bg-white py-16 sm:py-20">
-    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-xs uppercase tracking-widest text-gray-text mb-4">Proof</p>
-      <div class="w-12 h-0.5 bg-accent mb-12"></div>
-      <div class="max-w-3xl">
-        <p class="text-gray-text leading-relaxed mb-6">
-          Sallyann Reed has been a client for five years now. When there's a better deal out there for her business, I let her know, and when something goes wrong, she calls me rather than a helpline or a chatbot queue.
-        </p>
-        <p class="text-gray-text leading-relaxed">
-          That's how it should work, and for most of my clients it does. About 70% of the people I work with came through a recommendation from someone I'd already helped. I don't run ads or cold-call anyone. I just do the work properly and let people talk.
-        </p>
+  <!-- AboutHospitality (white) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <AboutHospitality />
+  </div>
+  <!-- AboutWhy (light-gray) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <AboutWhy />
+  </div>
+  <!-- AboutStats (navy) -->
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="right" />
+    <AboutStats />
+  </div>
+  <!-- Proof narrative (white) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="left" />
+    <section class="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+      <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs uppercase tracking-widest text-dark mb-4">Five years, one client, no slogans</p>
+        <div class="w-12 h-0.5 bg-accent mb-12"></div>
+        <div class="max-w-3xl">
+          <p class="text-gray-text leading-relaxed mb-6">
+            Sallyann Reed has been a client for five years. When there's a better deal available for her business, I tell her. When something goes wrong, she calls me and we sort it. That's how it should work.
+          </p>
+          <p class="text-gray-text leading-relaxed">
+            That's what Credo FS is built on. Not a slogan, but a way of deciding whether to take on a piece of work in the first place.
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
-  <TestimonialBlock
+    </section>
+  </div>
+  <SingleQuote
     label="Proof"
     heading="Five years and counting"
-    quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change. Peace of mind knowing that if there's an issue I can call him and it will be rectified very quickly."
+    quote="He has always been committed to providing me with an excellent service, knowing how my business works. If there's a better package for me he'll come in and advise me to change."
     name="Sallyann Reed"
     source="Five years as a customer, TrustPilot"
+    linkText="Read all reviews on TrustPilot"
+    linkHref="/reviews"
   />
-  <!-- Link to reviews -->
-  <div class="bg-white pb-12 -mt-8">
-    <div class="max-w-[1232px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-      <a href={href('/reviews')} class="text-sm font-semibold text-dark underline underline-offset-4 hover:text-accent transition-colors">
-        Read all reviews on TrustPilot &rarr;
-      </a>
-    </div>
+  <!-- AboutPersonal (light-gray) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="right" />
+    <AboutPersonal />
   </div>
-  <AboutPersonal />
-  <ContactCta
-    heading="One call, and I sort it."
-    subtext="Whether you're running one pub or thirty, you get the same mobile number. I'll go through your setup and tell you what I'd leave alone, what I'd change, and why, and I'm the one you ring when something goes wrong on a Friday."
-    hint="No charge, no contract, just a chat."
-  />
+  <!-- ContactCta (navy) -->
+  <div class="relative">
+    <TiltDivider from="light-gray" direction="left" />
+    <ContactCta
+      heading="Not sure if you're getting a fair deal?"
+      subtext="Let's find out. I'll go through your setup, tell you straight, and if there's nothing to change, I'll say so."
+      hint="A conversation costs nothing."
+    />
+  </div>
   <S10Footer />
 </Layout>

@@ -7,20 +7,30 @@ import ContactForm from "../components/credo/ContactForm.astro";
 import SocialLinks from "../components/credo/SocialLinks.astro";
 import ReassuranceText from "../components/credo/ReassuranceText.astro";
 import S10Footer from "../components/sections/S10Footer.astro";
+import TiltDivider from "../components/credo/TiltDivider.astro";
 ---
 
 <Layout title="Contact, Credo Financial Services">
   <S01Navigation />
   <PageHero
     bgImage="contact"
+    eyebrow="Contact"
     heading="One call, and I sort it. Start here."
     body={[
       "Ring me, WhatsApp me, or drop me a line. I'll ask a few questions about your setup and give you a straight answer.",
       "I answer personally, so there's no call centre and no ticket number in the way, and you'll usually hear back from me within a few hours.",
     ]}
   />
-  <ContactMethodCards />
-  <ContactForm />
+  <!-- ContactMethodCards (white) -->
+  <div class="relative bg-white">
+    <TiltDivider from="navy" direction="right" />
+    <ContactMethodCards />
+  </div>
+  <!-- ContactForm (gradient light-gray to white) -->
+  <div class="relative">
+    <TiltDivider from="white" direction="left" />
+    <ContactForm />
+  </div>
   <SocialLinks />
   <ReassuranceText />
   <S10Footer />

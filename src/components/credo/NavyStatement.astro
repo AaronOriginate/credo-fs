@@ -1,6 +1,7 @@
 ---
 /** NavyStatement — Figma node 4:33 */
 import { href } from '../../lib/nav';
+import BtnText from './BtnText.astro';
 interface Props {
   heading?: string;
   body?: string;
@@ -8,42 +9,56 @@ interface Props {
   linkText?: string;
   linkHref?: string;
   bg?: 'navy' | 'accent';
+  image?: string;
 }
 const {
-  heading = "I don't sell for anyone. I work for you.",
-  body = "I spent twenty years running pubs and hotels. For the last five I've been looking after the tills, the card machines, the funding, the broadband, the booking systems, all of it. One person on the end of the phone, whether you've got one venue or thirty. That's Credo.",
+  heading = "Forty years on your side",
+  body = "I'm not a card machine rep. I'm not a till salesman. I'm a hospitality operator who spent 20 years with Whitbread plc, ran my own pubs and restaurants, and got tired of watching good operators get a raw deal from people who didn't understand, or care about, how a pub actually works. I started Credo FS because the technology exists to make all of this simple. The problem was never the tech. It was the people selling it.",
   stats = [
-    { value: "25+", label: "years in hospitality" },
-    { value: "1", label: "number to call" },
+    { value: "30+", label: "years in hospitality" },
+    { value: "100%", label: "independent" },
+    { value: "1", label: "point of contact" },
   ],
   linkText = "Read more about my background",
   linkHref = "/about",
   bg = 'navy',
+  image = "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1600&q=80",
 } = Astro.props;
 
 const isAccent = bg === 'accent';
+const showImage = !isAccent && image;
 ---
 
-<section class={`${isAccent ? 'bg-accent' : 'bg-navy'} w-full`}>
-  <div class="max-w-[1232px] mx-auto px-8 py-24 sm:py-32">
-    <h2 class={`font-heading font-medium text-[48px] sm:text-[64px] lg:text-[80px] leading-tight tracking-[-2px] max-w-[990px] ${isAccent ? 'text-dark' : 'text-white'}`}>
+<section class={`${isAccent ? 'bg-accent' : 'bg-navy'} w-full relative overflow-hidden`}>
+  {showImage && (
+    <>
+      <div
+        class="absolute inset-0 bg-cover bg-center pointer-events-none"
+        style={`background-image: url('${image}'); mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 50%, black 90%);`}
+        aria-hidden="true"
+      ></div>
+      <div class="absolute inset-0 bg-navy/60 pointer-events-none" aria-hidden="true"></div>
+    </>
+  )}
+  <div class="max-w-[1232px] mx-auto px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32 relative z-10">
+    <h2 data-reveal class={`font-heading font-medium leading-[1.05] tracking-[-0.025em] max-w-[990px] ${isAccent ? 'text-dark' : 'text-white'}`} style="font-size: clamp(2.25rem, 6vw, 5rem);">
       {heading}
     </h2>
 
-    <p class={`text-lg leading-relaxed max-w-[700px] mt-8 ${isAccent ? 'text-dark/70' : 'text-white/80'}`}>
+    <p data-reveal="fade" style="--reveal-delay: 200ms;" class={`text-lg leading-relaxed max-w-[700px] mt-8 ${isAccent ? 'text-dark/70' : 'text-white/80'}`}>
       {body}
     </p>
 
     {(stats.length > 0 || linkHref) && (
-      <div class="flex flex-wrap items-center gap-6 mt-10">
+      <div class="flex flex-wrap items-center gap-6 mt-10" data-reveal-group="wide">
         {stats.map((stat) => (
-          <div class={`border rounded-lg px-6 py-4 text-center ${isAccent ? 'border-dark/20' : 'border-white/20'}`}>
+          <div data-reveal class={`border rounded-lg px-6 py-4 text-center ${isAccent ? 'border-dark/20' : 'border-white/20'}`}>
             <p class={`font-heading font-medium text-3xl ${isAccent ? 'text-dark' : 'text-accent'}`}>{stat.value}</p>
             <p class={`text-sm mt-1 ${isAccent ? 'text-dark/60' : 'text-white/60'}`}>{stat.label}</p>
           </div>
         ))}
         {linkHref && (
-          <a href={href(linkHref)} class={`font-medium hover:underline ml-auto ${isAccent ? 'text-dark' : 'text-accent'}`}>{linkText} &rarr;</a>
+          <BtnText href={linkHref} class={`font-medium ml-auto ${isAccent ? 'text-dark' : 'text-accent'}`}>{linkText}</BtnText>
         )}
       </div>
     )}
